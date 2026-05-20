@@ -33,7 +33,9 @@ function getVideoElement(source, autoplay, background) {
 
   const sourceEl = document.createElement('source');
   sourceEl.setAttribute('src', source);
-  sourceEl.setAttribute('type', `video/${source.split('.').pop()}`);
+  const ext = source.split('/').pop().split('.').pop();
+  const type = ['mp4', 'webm', 'ogg'].includes(ext) ? `video/${ext}` : 'video/mp4';
+  sourceEl.setAttribute('type', type);
   video.append(sourceEl);
 
   return video;
