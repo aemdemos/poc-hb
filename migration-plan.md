@@ -2,7 +2,7 @@
 
 **Source URL:** https://group.hugoboss.com/en/sustainability/strategy  
 **Project Type:** Document Authoring (DA) with Universal Editor (UE)  
-**Status:** Planning Phase  
+**Status:** Phase 1 Complete — Content Migration Done  
 **Last Updated:** 2026-05-20
 
 ---
@@ -192,25 +192,44 @@ Based on the source site's class naming (`small-*`, `medium-*`, `large-*`, `xlar
 
 ## 4. Migration Phases
 
-### Phase 1: Content Migration (Authoring Experience) ← NEXT
-- [ ] Set up page template structure
-- [ ] Create Hero block (content structure)
-- [ ] Create Carousel block (content structure)
-- [ ] Create Accordion block (content structure)
-- [ ] Create Embed/Video block (content structure)
-- [ ] Author all text content
-- [ ] Import images
-- [ ] Verify content renders correctly in preview
-- [ ] Validate authoring experience in Universal Editor
+### Phase 1: Content Migration (Authoring Experience) ✅ COMPLETE
+- [x] Set up page template structure
+- [x] Create Hero block (content structure — single cell with image + title)
+- [x] Create Carousel block (content structure — fact slides with image + text)
+- [x] Create Accordion block (content structure — title/body expandable items)
+- [x] Create Video block (content structure — poster image + video URL, modal playback)
+- [x] Create Columns block (content structure — image left, text right)
+- [x] Create Card-Carousel block (content structure — image + text + CTA cards)
+- [x] Author all text content for sustainability/strategy page
+- [x] Author all text content for sponsorship/golf page
+- [x] Import images (external URLs from source Dynamic Media)
+- [x] Create UE model for Embed block (`ue/models/blocks/embed.json`)
+- [x] Add card-carousel to section filter
+- [x] Create header navigation (`nav.plain.html`) with full mega menu + horizontal bar
+- [x] Create footer (`footer.plain.html`) with contact, legal, discover, and bottom bar
+- [x] Fix Video block: extensionless URL type detection + modal overlay playback
+- [x] Fix Hero block: single-cell structure matching UE model
+- [x] Fix poster image: added `?fmt=jpg&wid=1280` for Dynamic Media compatibility
+- [x] Validate authoring experience in Universal Editor
 
-### Phase 2: Design System & Styling
+**Pages migrated:**
+- `/en/sustainability/strategy` — 10 sections (Hero, Text, Video, Carousel, Accordion×2, Card-Carousel×2, Columns-with-image)
+- `/en/sponsorship/sports-sponsorship/golf` — 7 sections (Hero, Text×2, Carousel, Columns, Accordion, Card-Carousel)
+
+**Blocks used:** Hero, Carousel, Accordion, Video, Card-Carousel, Columns, Default Content
+
+### Phase 2: Design System & Styling ← NEXT
 - [ ] Extract and configure Averta PE fonts
 - [ ] Set up CSS custom properties (colors, typography, spacing)
 - [ ] Apply global styles to `styles/styles.css`
+- [ ] Style Header block (mega menu, horizontal nav bar, utilities)
 - [ ] Style Hero block
 - [ ] Style Carousel block (facts + cards variants)
 - [ ] Style Accordion block (strategic-pillars + value-chain variants)
-- [ ] Style footer
+- [ ] Style Card-Carousel block
+- [ ] Style Columns block
+- [ ] Style Video block (placeholder + modal)
+- [ ] Style Footer block (3-column top + 3-column bottom bar)
 - [ ] Responsive adjustments
 - [ ] Visual QA against source
 
@@ -227,3 +246,10 @@ Based on the source site's class naming (`small-*`, `medium-*`, `large-*`, `xlar
 | 2026-05-20 | Value chain icons = static image | The "Raw materials / Yarn / Manufacturing / etc." icons with labels are a static infographic PNG, not clickable tabs — the accordion below provides the expandable details |
 | 2026-05-20 | Content-first approach | Migrate content structure first, then apply styling to ensure good authoring UX |
 | 2026-05-20 | Removed "Downloads" block from inventory | PDF link to Annual Report not visible on the live page per user verification |
+| 2026-05-20 | Video block opens in modal overlay | Reference site plays video in a popup with dark overlay; updated video.js to match |
+| 2026-05-20 | Dynamic Media URLs need `?fmt=jpg&wid=1280` for images | EDS can't process extensionless DM image URLs; adding format params fixes it |
+| 2026-05-20 | Video block type detection defaults to `video/mp4` | Extensionless URLs broke the original `source.split('.').pop()` logic |
+| 2026-05-20 | Hero block uses single cell (not two columns) | UE model defines single-cell structure; two columns caused mismatch after UE save |
+| 2026-05-20 | Nav structure: 4 sections (brand, mega menu+home, utilities, horizontal bar) | Matches reference site's visual layout and reading order |
+| 2026-05-20 | Footer structure: 4 sections (contact, legal, discover, bottom bar) | Bottom bar uses 3 lines for authoring; CSS will handle horizontal layout in Phase 2 |
+| 2026-05-20 | Mega menu has no "Overview" child items | Reference site uses heading link for overview; children start with actual sub-pages |
