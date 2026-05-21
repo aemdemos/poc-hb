@@ -241,17 +241,26 @@ header nav .nav-tools {
   grid-area: tools;
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 0;
   font-size: var(--body-font-size-s);
   font-weight: 300;
   text-transform: uppercase;
   letter-spacing: 2px;
 }
 
-header nav .nav-tools p {
+header nav .nav-tools .default-content-wrapper {
   display: flex;
   align-items: center;
-  gap: 6px;
+}
+
+header nav .nav-tools p {
+  display: inline-flex;
+  align-items: center;
+  padding-left: 17px;
+}
+
+header nav .nav-tools p:first-child {
+  padding-left: 0;
 }
 
 header nav .nav-tools .icon {
