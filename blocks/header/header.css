@@ -6,6 +6,7 @@ header .nav-wrapper {
   width: 100%;
   z-index: 2;
   position: fixed;
+  transition: transform 0.3s;
 }
 
 header nav {
@@ -540,6 +541,15 @@ header nav .nav-search-panel form.has-value button {
 
 .nav-megamenu-overlay.active {
   display: block;
+}
+
+/* sticky scroll behavior */
+header .nav-wrapper.nav-scrolled-down {
+  transform: translateY(calc(-1 * var(--nav-height)));
+}
+
+header .nav-wrapper.nav-scrolled-up {
+  transform: translateY(0);
 }
 
 /* mobile: hide bar and tools details */

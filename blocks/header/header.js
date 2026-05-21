@@ -213,4 +213,21 @@ export default async function decorate(block) {
   overlay.className = 'nav-megamenu-overlay';
   overlay.addEventListener('click', () => closeMegaMenu(nav));
   navWrapper.append(overlay);
+
+  // Sticky scroll behavior: hide top row on scroll down, show on scroll up
+  let lastScrollY = 0;
+  window.addEventListener('scroll', () => {
+    const currentY = window.scrollY;
+    if (currentY > 100 && currentY > lastScrollY) {
+      navWrapper.classList.add('nav-scrolled-down');
+      navWrapper.classList.remove('nav-scrolled-up');
+    } else {
+      navWrapper.classList.remove('nav-scrolled-down');
+      navWrapper.classList.add('nav-scrolled-up');
+    }
+    if (currentY <= 10) {
+      navWrapper.classList.remove('nav-scrolled-down', 'nav-scrolled-up');
+    }
+    lastScrollY = currentY;
+  });
 }
