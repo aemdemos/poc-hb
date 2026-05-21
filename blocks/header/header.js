@@ -102,7 +102,7 @@ export default async function decorate(block) {
     });
   }
 
-  // Tools: remove button styling
+  // Tools: remove button styling and set up search toggle
   const navTools = nav.querySelector('.nav-tools');
   if (navTools) {
     navTools.querySelectorAll('.button-container').forEach((bc) => {
@@ -110,6 +110,15 @@ export default async function decorate(block) {
       const btn = bc.querySelector('.button');
       if (btn) btn.classList.remove('button');
     });
+
+    const searchLink = navTools.querySelector('a[href*="search"]');
+    if (searchLink) {
+      searchLink.addEventListener('click', (e) => {
+        e.preventDefault();
+        const searchPanel = nav.querySelector('.nav-search-panel');
+        if (searchPanel) searchPanel.classList.toggle('active');
+      });
+    }
   }
 
   // Horizontal bar: setup dropdowns on hover
@@ -164,6 +173,21 @@ export default async function decorate(block) {
       closeMegaMenu(nav);
     }
   });
+
+  // Search panel
+  const searchPanel = document.createElement('div');
+  searchPanel.className = 'nav-search-panel';
+  const searchForm = document.createElement('form');
+  searchForm.action = '/en/search';
+  searchForm.method = 'get';
+  const searchInput = document.createElement('input');
+  searchInput.type = 'text';
+  searchInput.name = 'q';
+  searchInput.placeholder = 'Insert search term';
+  searchInput.setAttribute('aria-label', 'Search');
+  searchForm.append(searchInput);
+  searchPanel.append(searchForm);
+  nav.append(searchPanel);
 
   const navWrapper = document.createElement('div');
   navWrapper.className = 'nav-wrapper';
