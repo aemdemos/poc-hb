@@ -165,7 +165,7 @@ header nav[aria-expanded='true'] .nav-megamenu-container {
   background: var(--background-color);
   z-index: 10;
   padding: 40px 32px 60px;
-  min-height: 350px;
+  min-height: 480px;
   max-height: calc(100dvh - var(--nav-height));
   overflow-y: auto;
 }
