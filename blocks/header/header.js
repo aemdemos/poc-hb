@@ -190,6 +190,9 @@ export default async function decorate(block) {
   searchInput.name = 'q';
   searchInput.placeholder = 'Insert search term';
   searchInput.setAttribute('aria-label', 'Search');
+  searchInput.addEventListener('input', () => {
+    searchForm.classList.toggle('has-value', searchInput.value.length > 0);
+  });
   const searchSubmit = document.createElement('button');
   searchSubmit.type = 'submit';
   searchSubmit.setAttribute('aria-label', 'Submit search');
