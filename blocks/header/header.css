@@ -309,8 +309,23 @@ header nav .nav-bar {
   header nav .nav-bar {
     display: block;
     grid-area: bar;
-    border-top: 1px solid var(--light-color);
+    position: relative;
     padding-top: 12px;
+  }
+
+  header nav .nav-bar::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100vw;
+    height: 1px;
+    background: #e0e0e0;
+  }
+
+  header nav[aria-expanded='true'] .nav-bar::before {
+    display: none;
   }
 
   header nav .nav-bar .default-content-wrapper > ul {
