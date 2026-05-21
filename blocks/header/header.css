@@ -185,7 +185,7 @@ header nav .nav-megamenu .default-content-wrapper > ul > li > p > a {
   font-weight: 800;
   font-size: var(--body-font-size-m);
   text-transform: uppercase;
-  display: inline-block;
+  display: block;
   position: relative;
 }
 
@@ -193,18 +193,19 @@ header nav .nav-megamenu .default-content-wrapper > ul > li > a::after,
 header nav .nav-megamenu .default-content-wrapper > ul > li > p > a::after {
   content: '';
   position: absolute;
-  bottom: -2px;
+  bottom: -6px;
   left: 0;
   width: 100%;
-  max-width: 0;
   height: 1px;
   background: var(--text-color);
-  transition: max-width 0.3s;
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.3s;
 }
 
 header nav .nav-megamenu .default-content-wrapper > ul > li > a:hover::after,
 header nav .nav-megamenu .default-content-wrapper > ul > li > p > a:hover::after {
-  max-width: 100%;
+  transform: scaleX(1);
 }
 
 header nav .nav-megamenu .default-content-wrapper > ul > li > a:hover,
