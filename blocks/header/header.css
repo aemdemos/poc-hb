@@ -397,22 +397,23 @@ header nav .nav-search-panel.active {
 
 header nav .nav-search-panel form {
   position: relative;
-  width: 38%;
-  max-width: 480px;
+  width: 50%;
+  max-width: 600px;
   margin: 0 auto;
+  padding: 0 24px;
 }
 
 header nav .nav-search-panel input {
   width: 100%;
-  height: 30px;
-  font-size: 14px;
+  height: 39px;
+  font-size: 16px;
   font-family: var(--body-font-family);
   font-weight: 300;
   text-align: center;
   border: none;
-  border-bottom: 2px solid var(--text-color);
+  border-bottom: 1px solid var(--text-color);
   border-radius: 0;
-  padding: 6px 30px 6px 0;
+  padding: 10px 40px;
   background: transparent;
   outline: none;
   caret-color: var(--text-color);
@@ -421,18 +422,19 @@ header nav .nav-search-panel input {
 header nav .nav-search-panel input::placeholder {
   color: #aaa;
   font-weight: 300;
-  font-size: 14px;
+  font-size: 16px;
 }
 
 header nav .nav-search-panel button {
   position: absolute;
-  right: 0;
-  bottom: 8px;
-  width: 32px;
-  height: 32px;
+  right: 29px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
   border: none;
   background: url('/icons/arrow-right.svg') no-repeat center;
-  background-size: contain;
+  background-size: 40px 40px;
   padding: 0;
   cursor: pointer;
   display: none;
