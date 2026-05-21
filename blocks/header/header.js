@@ -115,8 +115,13 @@ export default async function decorate(block) {
     if (searchLink) {
       searchLink.addEventListener('click', (e) => {
         e.preventDefault();
-        const searchPanel = nav.querySelector('.nav-search-panel');
-        if (searchPanel) searchPanel.classList.toggle('active');
+        const panel = nav.querySelector('.nav-search-panel');
+        if (panel) {
+          panel.classList.toggle('active');
+          if (panel.classList.contains('active')) {
+            panel.querySelector('input')?.focus();
+          }
+        }
       });
     }
   }
@@ -185,7 +190,11 @@ export default async function decorate(block) {
   searchInput.name = 'q';
   searchInput.placeholder = 'Insert search term';
   searchInput.setAttribute('aria-label', 'Search');
+  const searchSubmit = document.createElement('button');
+  searchSubmit.type = 'submit';
+  searchSubmit.setAttribute('aria-label', 'Submit search');
   searchForm.append(searchInput);
+  searchForm.append(searchSubmit);
   searchPanel.append(searchForm);
   nav.append(searchPanel);
 

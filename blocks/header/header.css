@@ -385,8 +385,9 @@ header nav .nav-search-panel {
   height: 75px;
   background: #fefefe;
   display: none;
-  align-items: center;
+  align-items: flex-end;
   justify-content: center;
+  padding-bottom: 10px;
   z-index: 9;
 }
 
@@ -395,8 +396,9 @@ header nav .nav-search-panel.active {
 }
 
 header nav .nav-search-panel form {
-  width: 50%;
-  max-width: 600px;
+  position: relative;
+  width: 42%;
+  max-width: 500px;
 }
 
 header nav .nav-search-panel input {
@@ -409,9 +411,38 @@ header nav .nav-search-panel input {
   border: none;
   border-bottom: 1px solid var(--text-color);
   border-radius: 0;
-  padding: 10px 40px;
+  padding: 10px 40px 10px 10px;
   background: transparent;
   outline: none;
+  caret-color: var(--text-color);
+}
+
+header nav .nav-search-panel input::placeholder {
+  color: #999;
+  font-weight: 300;
+  font-size: 16px;
+}
+
+header nav .nav-search-panel button {
+  position: absolute;
+  right: 0;
+  bottom: 10px;
+  width: 24px;
+  height: 24px;
+  border: none;
+  background: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+header nav .nav-search-panel button::after {
+  content: '';
+  display: block;
+  width: 10px;
+  height: 10px;
+  border-right: 2px solid var(--text-color);
+  border-bottom: 2px solid var(--text-color);
+  transform: rotate(-45deg);
 }
 
 /* megamenu overlay */
