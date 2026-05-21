@@ -165,7 +165,7 @@ header nav[aria-expanded='true'] .nav-megamenu-container {
   background: var(--background-color);
   z-index: 10;
   padding: 40px 32px;
-  height: 420px;
+  height: 400px;
   max-height: calc(100dvh - var(--nav-height));
   overflow-y: auto;
 }
@@ -189,7 +189,7 @@ header nav .nav-megamenu .default-content-wrapper > ul > li > p > a {
 }
 
 header nav .nav-megamenu .default-content-wrapper > ul > li > p {
-  margin: 0 0 16px;
+  margin: 0 0 20px;
 }
 
 header nav .nav-megamenu .default-content-wrapper > ul > li > ul {
@@ -218,7 +218,7 @@ header nav .nav-megamenu .default-content-wrapper > ul > li > ul > li > a:hover 
 @media (width >= 900px) {
   header nav[aria-expanded='true'] .nav-megamenu-container {
     padding: 40px 0;
-    height: 420px;
+    height: 400px;
   }
 
   header nav .nav-megamenu .default-content-wrapper {
