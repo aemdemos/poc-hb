@@ -397,10 +397,9 @@ header nav .nav-search-panel.active {
 
 header nav .nav-search-panel form {
   position: relative;
-  width: 50%;
-  max-width: 600px;
+  width: 42%;
+  max-width: 500px;
   margin: 0 auto;
-  padding: 0 24px;
 }
 
 header nav .nav-search-panel input {
@@ -427,11 +426,10 @@ header nav .nav-search-panel input::placeholder {
 
 header nav .nav-search-panel button {
   position: absolute;
-  right: 29px;
-  top: 50%;
-  transform: translateY(-50%);
+  right: 0;
+  top: 0;
   width: 40px;
-  height: 40px;
+  height: 39px;
   border: none;
   background: url('/icons/arrow-right.svg') no-repeat center;
   background-size: 40px 40px;
