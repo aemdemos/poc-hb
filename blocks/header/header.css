@@ -127,7 +127,8 @@ header .nav-brand {
 
 header nav .nav-brand a {
   color: var(--text-color);
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
   font-size: 1.25rem;
   font-weight: 800;
   letter-spacing: 3px;
@@ -136,6 +137,11 @@ header nav .nav-brand a {
 
 header nav .nav-brand a:hover {
   color: var(--text-color);
+}
+
+header nav .nav-brand picture {
+  display: inline-flex;
+  align-items: center;
 }
 
 header nav .nav-brand img {
