@@ -47,6 +47,7 @@ function toggleMegaMenu(nav, forceState = null) {
 
 function setupHorizontalNav(navBar) {
   if (!navBar) return;
+  navBar.querySelectorAll('a[title]').forEach((a) => a.removeAttribute('title'));
   navBar.querySelectorAll(':scope .default-content-wrapper > ul > li').forEach((item) => {
     if (item.querySelector('ul')) {
       item.classList.add('nav-drop');
