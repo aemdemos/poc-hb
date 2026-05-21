@@ -397,8 +397,9 @@ header nav .nav-search-panel.active {
 
 header nav .nav-search-panel form {
   position: relative;
-  width: 40%;
-  max-width: 500px;
+  width: 38%;
+  max-width: 480px;
+  margin: 0 auto;
 }
 
 header nav .nav-search-panel input {
@@ -409,7 +410,7 @@ header nav .nav-search-panel input {
   font-weight: 300;
   text-align: center;
   border: none;
-  border-bottom: 1px solid var(--text-color);
+  border-bottom: 2px solid var(--text-color);
   border-radius: 0;
   padding: 6px 30px 6px 0;
   background: transparent;
@@ -426,9 +427,9 @@ header nav .nav-search-panel input::placeholder {
 header nav .nav-search-panel button {
   position: absolute;
   right: 0;
-  bottom: 6px;
-  width: 20px;
-  height: 20px;
+  bottom: 8px;
+  width: 32px;
+  height: 32px;
   border: none;
   background: url('/icons/arrow-right.svg') no-repeat center;
   background-size: contain;
