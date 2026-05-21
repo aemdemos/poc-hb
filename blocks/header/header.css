@@ -397,8 +397,8 @@ header nav .nav-search-panel.active {
 
 header nav .nav-search-panel form {
   position: relative;
-  width: 36%;
-  max-width: 450px;
+  width: 40%;
+  max-width: 500px;
 }
 
 header nav .nav-search-panel input {
@@ -430,7 +430,8 @@ header nav .nav-search-panel button {
   width: 20px;
   height: 20px;
   border: none;
-  background: none;
+  background: url('/icons/arrow-right.svg') no-repeat center;
+  background-size: contain;
   padding: 0;
   cursor: pointer;
   display: none;
@@ -438,14 +439,6 @@ header nav .nav-search-panel button {
 
 header nav .nav-search-panel form.has-value button {
   display: block;
-}
-
-header nav .nav-search-panel button::after {
-  content: '›';
-  display: block;
-  font-size: 24px;
-  line-height: 20px;
-  color: var(--text-color);
 }
 
 /* megamenu overlay */
