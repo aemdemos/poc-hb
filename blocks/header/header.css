@@ -215,9 +215,9 @@ header nav .nav-megamenu .default-content-wrapper > ul > li > ul > li > a {
   }
 
   header nav .nav-megamenu .default-content-wrapper {
-    max-width: 1160px;
+    max-width: 1200px;
     margin: 0 auto;
-    padding: 0 32px;
+    padding: 0 24px;
   }
 
   header nav .nav-megamenu .default-content-wrapper > ul {
