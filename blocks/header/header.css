@@ -339,10 +339,10 @@ header nav .nav-bar {
     position: relative;
   }
 
-  header nav .nav-bar::before {
+  header nav .nav-bar::before,
+  header nav .nav-bar::after {
     content: '';
     position: absolute;
-    top: 0;
     left: 50%;
     transform: translateX(-50%);
     width: 100vw;
@@ -350,7 +350,16 @@ header nav .nav-bar {
     background: #ccc;
   }
 
-  header nav[aria-expanded='true'] .nav-bar::before {
+  header nav .nav-bar::before {
+    top: 0;
+  }
+
+  header nav .nav-bar::after {
+    bottom: 0;
+  }
+
+  header nav[aria-expanded='true'] .nav-bar::before,
+  header nav[aria-expanded='true'] .nav-bar::after {
     display: none;
   }
 
