@@ -82,9 +82,15 @@ export default async function decorate(block) {
     }
   }
 
-  // Megamenu: remove button styling from links
+  // Megamenu: extract home icon and remove button styling
   const navMegamenu = nav.querySelector('.nav-megamenu');
+  let homeIcon = null;
   if (navMegamenu) {
+    const firstP = navMegamenu.querySelector(':scope .default-content-wrapper > p');
+    if (firstP && (firstP.querySelector('.icon') || firstP.textContent.includes(':icon-'))) {
+      homeIcon = firstP;
+      firstP.classList.add('nav-home');
+    }
     navMegamenu.querySelectorAll('.button-container').forEach((bc) => {
       bc.classList.remove('button-container');
       const btn = bc.querySelector('.button');
@@ -115,6 +121,12 @@ export default async function decorate(block) {
   hamburger.addEventListener('click', () => toggleMegaMenu(nav));
   nav.prepend(hamburger);
   nav.setAttribute('aria-expanded', 'false');
+
+  // Place home icon next to hamburger
+  if (homeIcon) {
+    homeIcon.remove();
+    hamburger.after(homeIcon);
+  }
 
   // Desktop: open megamenu on hover over hamburger area
   if (isDesktop.matches) {
