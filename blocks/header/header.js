@@ -147,10 +147,11 @@ export default async function decorate(block) {
     hamburger.append(homeIcon);
   }
 
-  // Desktop: open megamenu on hover over hamburger area
-  if (isDesktop.matches) {
-    hamburger.addEventListener('mouseenter', () => openMegaMenu(nav));
-  }
+  // Desktop: open megamenu on hover over burger button only
+  const hamburgerBtn = hamburger.querySelector('button');
+  hamburgerBtn.addEventListener('mouseenter', () => {
+    if (isDesktop.matches) openMegaMenu(nav);
+  });
   nav.addEventListener('mouseleave', (e) => {
     if (isDesktop.matches && nav.getAttribute('aria-expanded') === 'true') {
       if (!nav.contains(e.relatedTarget)) {
