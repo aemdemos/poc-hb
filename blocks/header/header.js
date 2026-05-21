@@ -21,6 +21,8 @@ function closeMegaMenu(nav) {
   nav.setAttribute('aria-expanded', 'false');
   nav.querySelector('.nav-hamburger button').setAttribute('aria-label', 'Open navigation');
   document.body.style.overflowY = '';
+  const overlay = document.querySelector('.nav-megamenu-overlay');
+  if (overlay) overlay.classList.remove('active');
 }
 
 function openMegaMenu(nav) {
@@ -29,6 +31,8 @@ function openMegaMenu(nav) {
   if (!isDesktop.matches) {
     document.body.style.overflowY = 'hidden';
   }
+  const overlay = document.querySelector('.nav-megamenu-overlay');
+  if (overlay) overlay.classList.add('active');
 }
 
 function toggleMegaMenu(nav, forceState = null) {
@@ -165,4 +169,10 @@ export default async function decorate(block) {
   navWrapper.className = 'nav-wrapper';
   navWrapper.append(nav);
   block.append(navWrapper);
+
+  // Page overlay behind megamenu
+  const overlay = document.createElement('div');
+  overlay.className = 'nav-megamenu-overlay';
+  overlay.addEventListener('click', () => closeMegaMenu(nav));
+  navWrapper.append(overlay);
 }

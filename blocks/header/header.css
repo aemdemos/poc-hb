@@ -165,7 +165,8 @@ header nav[aria-expanded='true'] .nav-megamenu-container {
   background: var(--background-color);
   border-top: 1px solid var(--light-color);
   z-index: 10;
-  padding: 32px;
+  padding: 60px 32px 80px;
+  min-height: 300px;
   max-height: calc(100dvh - var(--nav-height));
   overflow-y: auto;
 }
@@ -186,20 +187,23 @@ header nav .nav-megamenu .default-content-wrapper > ul > li > p > a {
   font-weight: 800;
   font-size: var(--body-font-size-m);
   text-transform: uppercase;
+  margin-bottom: 20px;
+  display: inline-block;
 }
 
 header nav .nav-megamenu .default-content-wrapper > ul > li > p {
-  margin: 0;
+  margin: 0 0 20px;
 }
 
 header nav .nav-megamenu .default-content-wrapper > ul > li > ul {
   list-style: none;
-  padding: 8px 0 0;
+  padding: 0;
   margin: 0;
 }
 
 header nav .nav-megamenu .default-content-wrapper > ul > li > ul > li {
-  padding: 4px 0;
+  padding: 2px 0;
+  line-height: 1.7;
 }
 
 header nav .nav-megamenu .default-content-wrapper > ul > li > ul > li > a {
@@ -209,9 +213,14 @@ header nav .nav-megamenu .default-content-wrapper > ul > li > ul > li > a {
   color: var(--text-color);
 }
 
+header nav .nav-megamenu .default-content-wrapper > ul > li > ul > li > a:hover {
+  color: var(--color-gold);
+  text-decoration: underline;
+}
+
 @media (width >= 900px) {
   header nav[aria-expanded='true'] .nav-megamenu-container {
-    padding: 48px 0;
+    padding: 60px 0 80px;
   }
 
   header nav .nav-megamenu .default-content-wrapper {
@@ -353,6 +362,20 @@ header nav .nav-bar {
     font-weight: 300;
     font-size: var(--body-font-size-s);
   }
+}
+
+/* megamenu overlay */
+.nav-megamenu-overlay {
+  position: fixed;
+  inset: 0;
+  top: var(--nav-height);
+  background: rgb(0 0 0 / 80%);
+  z-index: 1;
+  display: none;
+}
+
+.nav-megamenu-overlay.active {
+  display: block;
 }
 
 /* mobile: hide bar and tools details */
