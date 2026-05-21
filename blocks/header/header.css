@@ -386,7 +386,7 @@ header nav .nav-bar {
     transform: translateX(-50%);
     width: 100vw;
     list-style: none;
-    padding: 10px 0;
+    padding: 0;
     margin: 0;
     background: #fefefe;
     white-space: nowrap;
@@ -402,7 +402,7 @@ header nav .nav-bar {
   header nav .nav-bar .default-content-wrapper > ul > li > ul > li > a,
   header nav .nav-bar .default-content-wrapper > ul > li > ul > li > p > a {
     display: block;
-    padding: 8px 10px;
+    padding: 18px 10px;
     font-size: 14px;
     font-weight: 800;
     color: var(--text-color);
