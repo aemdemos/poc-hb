@@ -330,6 +330,7 @@ header nav .nav-bar {
   header nav .nav-bar .default-content-wrapper > ul {
     list-style: none;
     display: flex;
+    justify-content: center;
     gap: 0;
     margin: 0;
     padding: 0;
@@ -340,7 +341,7 @@ header nav .nav-bar {
   }
 
   header nav .nav-bar .default-content-wrapper > ul > li {
-    position: relative;
+    position: static;
   }
 
   header nav .nav-bar .default-content-wrapper > ul > li > a,
@@ -376,18 +377,21 @@ header nav .nav-bar {
     text-decoration: underline;
   }
 
-  /* submenu dropdown */
+  /* submenu dropdown - full width bar */
   header nav .nav-bar .default-content-wrapper > ul > li > ul {
     display: none;
     position: absolute;
     top: 100%;
-    left: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100vw;
     list-style: none;
     padding: 10px 0;
     margin: 0;
     background: #fefefe;
     white-space: nowrap;
     z-index: 5;
+    justify-content: center;
   }
 
   header nav .nav-bar .default-content-wrapper > ul > li[aria-expanded='true'] > ul {
