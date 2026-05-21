@@ -122,15 +122,12 @@ header nav .nav-home .icon {
 header .nav-brand {
   grid-area: brand;
   text-align: center;
-  font-size: 20px;
-  font-weight: 800;
   line-height: 1;
-  text-transform: uppercase;
-  letter-spacing: 3px;
 }
 
 header nav .nav-brand a {
   color: var(--text-color);
+  display: inline-block;
 }
 
 header nav .nav-brand a:hover {
@@ -138,8 +135,8 @@ header nav .nav-brand a:hover {
 }
 
 header nav .nav-brand img {
-  width: var(--header-brand-width);
-  height: auto;
+  height: 1.25rem;
+  width: auto;
 }
 
 /* megamenu */
