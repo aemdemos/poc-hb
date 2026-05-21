@@ -16,7 +16,7 @@ header nav {
     'megamenu megamenu megamenu megamenu' 0
     'bar bar bar bar' auto / auto auto 1fr auto;
   align-items: center;
-  gap: 0 12px;
+  gap: 0 16px;
   margin: auto;
   max-width: var(--header-nav-max-width);
   padding: var(--header-nav-padding);
@@ -148,6 +148,7 @@ header nav[aria-expanded='true'] .nav-megamenu-container {
   left: 0;
   right: 0;
   background: var(--background-color);
+  border-top: 1px solid var(--light-color);
   z-index: 10;
   padding: 32px;
   max-height: calc(100dvh - var(--nav-height));
@@ -165,10 +166,15 @@ header nav .nav-megamenu .default-content-wrapper > ul > li {
   border-bottom: 1px solid var(--light-color);
 }
 
-header nav .nav-megamenu .default-content-wrapper > ul > li > a {
+header nav .nav-megamenu .default-content-wrapper > ul > li > a,
+header nav .nav-megamenu .default-content-wrapper > ul > li > p > a {
   font-weight: 800;
-  font-size: var(--body-font-size-m);
+  font-size: var(--body-font-size-s);
   text-transform: uppercase;
+}
+
+header nav .nav-megamenu .default-content-wrapper > ul > li > p {
+  margin: 0;
 }
 
 header nav .nav-megamenu .default-content-wrapper > ul > li > ul {
@@ -183,24 +189,29 @@ header nav .nav-megamenu .default-content-wrapper > ul > li > ul > li {
 
 header nav .nav-megamenu .default-content-wrapper > ul > li > ul > li > a {
   font-weight: 300;
-  font-size: var(--body-font-size-m);
+  font-size: var(--body-font-size-s);
   text-transform: none;
+  color: var(--text-color);
 }
 
 @media (width >= 900px) {
   header nav[aria-expanded='true'] .nav-megamenu-container {
-    padding: 40px 60px;
+    padding: 48px 80px;
   }
 
   header nav .nav-megamenu .default-content-wrapper > ul {
     display: grid;
     grid-template-columns: repeat(6, 1fr);
-    gap: 32px;
+    gap: 40px;
   }
 
   header nav .nav-megamenu .default-content-wrapper > ul > li {
     border-bottom: none;
     padding: 0;
+  }
+
+  header nav .nav-megamenu .default-content-wrapper > ul > li > ul > li {
+    padding: 3px 0;
   }
 }
 
