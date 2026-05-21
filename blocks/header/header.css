@@ -427,13 +427,12 @@ header nav .nav-search-panel input::placeholder {
 header nav .nav-search-panel button {
   position: absolute;
   right: 5px;
-  top: 50%;
-  transform: translateY(-50%);
+  top: 0;
+  bottom: 0;
   width: 40px;
-  height: 40px;
   border: none;
   background: url('/icons/arrow-right.svg') no-repeat center;
-  background-size: 40px 40px;
+  background-size: 20px 20px;
   padding: 0;
   cursor: pointer;
   display: none;
