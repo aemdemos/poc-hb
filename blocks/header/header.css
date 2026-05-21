@@ -412,7 +412,7 @@ header nav .nav-search-panel input {
   border: none;
   border-bottom: 1px solid var(--text-color);
   border-radius: 0;
-  padding: 10px 40px 10px 0;
+  padding: 10px 40px;
   background: transparent;
   outline: none;
   caret-color: var(--text-color);
@@ -429,11 +429,11 @@ header nav .nav-search-panel button {
   right: 5px;
   top: 50%;
   transform: translateY(-50%);
-  width: 24px;
-  height: 24px;
+  width: 40px;
+  height: 40px;
   border: none;
   background: url('/icons/arrow-right.svg') no-repeat center;
-  background-size: 24px 24px;
+  background-size: 40px 40px;
   padding: 0;
   cursor: pointer;
   display: none;
