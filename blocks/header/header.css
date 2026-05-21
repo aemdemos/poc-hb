@@ -389,6 +389,7 @@ header nav .nav-bar {
     padding: 0;
     margin: 0;
     background: #fefefe;
+    border-bottom: 1px solid #ccc;
     white-space: nowrap;
     z-index: 5;
     justify-content: center;
