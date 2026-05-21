@@ -394,6 +394,9 @@ header nav .nav-bar {
     white-space: nowrap;
     z-index: 5;
     justify-content: center;
+    box-sizing: border-box;
+    align-items: center;
+    height: 52px;
   }
 
   header nav .nav-bar .default-content-wrapper > ul > li[aria-expanded='true'] > ul {
@@ -404,7 +407,7 @@ header nav .nav-bar {
   header nav .nav-bar .default-content-wrapper > ul > li > ul > li > a,
   header nav .nav-bar .default-content-wrapper > ul > li > ul > li > p > a {
     display: block;
-    padding: 18px 10px;
+    padding: 16px 10px;
     font-size: 14px;
     font-weight: 800;
     color: var(--text-color);
