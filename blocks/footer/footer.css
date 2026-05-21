@@ -1,8 +1,10 @@
 @import url('./footer-tokens.css');
 
 footer {
-  background-color: var(--light-color);
-  font-size: var(--body-font-size-xs);
+  background-color: var(--text-color);
+  color: var(--background-color);
+  font-size: var(--body-font-size-s);
+  font-weight: 300;
 }
 
 footer .footer > div {
@@ -13,10 +15,78 @@ footer .footer > div {
 
 footer .footer p {
   margin: 0;
+  line-height: 1.8;
+}
+
+footer .footer a {
+  color: var(--background-color);
+  text-decoration: none;
+}
+
+footer .footer a:hover {
+  color: var(--color-gold);
+  text-decoration: none;
+}
+
+footer .footer h4 {
+  color: var(--background-color);
+  font-size: var(--body-font-size-m);
+  font-weight: 800;
+  text-transform: uppercase;
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+
+footer .footer ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+footer .footer ul li {
+  padding: 4px 0;
+}
+
+footer .footer .icon {
+  width: 20px;
+  height: 20px;
+}
+
+/* sections layout */
+footer .footer > div > div {
+  padding: 24px 0;
+  border-bottom: 1px solid rgb(255 255 255 / 15%);
+}
+
+footer .footer > div > div:last-child {
+  border-bottom: none;
 }
 
 @media (width >= 900px) {
   footer .footer > div {
     padding: var(--footer-padding-desktop);
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 40px;
+  }
+
+  footer .footer > div > div {
+    padding: 0;
+    border-bottom: none;
+  }
+
+  footer .footer > div > div:last-child {
+    grid-column: 1 / -1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 40px;
+    border-top: 1px solid rgb(255 255 255 / 15%);
+  }
+
+  footer .footer > div > div:last-child p {
+    display: flex;
+    align-items: center;
+    gap: 12px;
   }
 }
