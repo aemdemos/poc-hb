@@ -164,8 +164,7 @@ header nav[aria-expanded='true'] .nav-megamenu-container {
   right: 0;
   background: var(--background-color);
   z-index: 10;
-  padding: 40px 32px 60px;
-  min-height: 480px;
+  padding: 100px 32px 164px;
   max-height: calc(100dvh - var(--nav-height));
   overflow-y: auto;
 }
@@ -185,12 +184,13 @@ header nav .nav-megamenu .default-content-wrapper > ul > li > p > a {
   font-weight: 800;
   font-size: var(--body-font-size-m);
   text-transform: uppercase;
-  margin-bottom: 12px;
+  margin-bottom: 20px;
   display: inline-block;
+  line-height: 28px;
 }
 
 header nav .nav-megamenu .default-content-wrapper > ul > li > p {
-  margin: 0 0 12px;
+  margin: 0 0 20px;
 }
 
 header nav .nav-megamenu .default-content-wrapper > ul > li > ul {
@@ -200,8 +200,8 @@ header nav .nav-megamenu .default-content-wrapper > ul > li > ul {
 }
 
 header nav .nav-megamenu .default-content-wrapper > ul > li > ul > li {
-  padding: 1px 0;
-  line-height: 1.6;
+  padding: 0;
+  line-height: 27.2px;
 }
 
 header nav .nav-megamenu .default-content-wrapper > ul > li > ul > li > a {
@@ -218,7 +218,7 @@ header nav .nav-megamenu .default-content-wrapper > ul > li > ul > li > a:hover 
 
 @media (width >= 900px) {
   header nav[aria-expanded='true'] .nav-megamenu-container {
-    padding: 40px 0 60px;
+    padding: 100px 0 164px;
   }
 
   header nav .nav-megamenu .default-content-wrapper {
