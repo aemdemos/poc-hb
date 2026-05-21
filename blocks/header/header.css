@@ -169,7 +169,7 @@ header nav .nav-megamenu .default-content-wrapper > ul > li {
 header nav .nav-megamenu .default-content-wrapper > ul > li > a,
 header nav .nav-megamenu .default-content-wrapper > ul > li > p > a {
   font-weight: 800;
-  font-size: var(--body-font-size-s);
+  font-size: var(--body-font-size-m);
   text-transform: uppercase;
 }
 
@@ -189,14 +189,20 @@ header nav .nav-megamenu .default-content-wrapper > ul > li > ul > li {
 
 header nav .nav-megamenu .default-content-wrapper > ul > li > ul > li > a {
   font-weight: 300;
-  font-size: var(--body-font-size-s);
+  font-size: var(--body-font-size-m);
   text-transform: none;
   color: var(--text-color);
 }
 
 @media (width >= 900px) {
   header nav[aria-expanded='true'] .nav-megamenu-container {
-    padding: 48px 80px;
+    padding: 48px 0;
+  }
+
+  header nav .nav-megamenu .default-content-wrapper {
+    max-width: 1160px;
+    margin: 0 auto;
+    padding: 0 32px;
   }
 
   header nav .nav-megamenu .default-content-wrapper > ul {
