@@ -321,7 +321,7 @@ header nav .nav-bar {
     transform: translateX(-50%);
     width: 100vw;
     height: 1px;
-    background: #e0e0e0;
+    background: #ccc;
   }
 
   header nav[aria-expanded='true'] .nav-bar::before {
