@@ -343,27 +343,35 @@ header nav .nav-bar {
     position: relative;
   }
 
-  header nav .nav-bar .default-content-wrapper > ul > li > a {
+  header nav .nav-bar .default-content-wrapper > ul > li > a,
+  header nav .nav-bar .default-content-wrapper > ul > li > p > a {
     display: block;
     padding: 18px 10px;
     color: var(--text-color);
     text-decoration: none;
   }
 
+  header nav .nav-bar .default-content-wrapper > ul > li > p {
+    margin: 0;
+  }
+
   /* parent category: black + underline */
-  header nav .nav-bar .default-content-wrapper > ul > li:first-child > a {
+  header nav .nav-bar .default-content-wrapper > ul > li:first-child > a,
+  header nav .nav-bar .default-content-wrapper > ul > li:first-child > p > a {
     padding: 18px 13px;
     text-decoration: underline;
   }
 
   /* active page: gold + underline */
-  header nav .nav-bar .default-content-wrapper > ul > li:nth-child(2) > a {
+  header nav .nav-bar .default-content-wrapper > ul > li:nth-child(2) > a,
+  header nav .nav-bar .default-content-wrapper > ul > li:nth-child(2) > p > a {
     color: var(--color-gold);
     text-decoration: underline;
   }
 
   /* hover: gold + underline */
-  header nav .nav-bar .default-content-wrapper > ul > li > a:hover {
+  header nav .nav-bar .default-content-wrapper > ul > li > a:hover,
+  header nav .nav-bar .default-content-wrapper > ul > li > p > a:hover {
     color: var(--color-gold);
     text-decoration: underline;
   }
@@ -387,7 +395,8 @@ header nav .nav-bar {
     gap: 0;
   }
 
-  header nav .nav-bar .default-content-wrapper > ul > li > ul > li > a {
+  header nav .nav-bar .default-content-wrapper > ul > li > ul > li > a,
+  header nav .nav-bar .default-content-wrapper > ul > li > ul > li > p > a {
     display: block;
     padding: 8px 10px;
     font-size: 14px;
@@ -397,7 +406,12 @@ header nav .nav-bar {
     text-transform: uppercase;
   }
 
-  header nav .nav-bar .default-content-wrapper > ul > li > ul > li > a:hover {
+  header nav .nav-bar .default-content-wrapper > ul > li > ul > li > p {
+    margin: 0;
+  }
+
+  header nav .nav-bar .default-content-wrapper > ul > li > ul > li > a:hover,
+  header nav .nav-bar .default-content-wrapper > ul > li > ul > li > p > a:hover {
     color: var(--color-gold);
     text-decoration: underline;
   }
