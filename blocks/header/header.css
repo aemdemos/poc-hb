@@ -186,6 +186,31 @@ header nav .nav-megamenu .default-content-wrapper > ul > li > p > a {
   font-size: var(--body-font-size-m);
   text-transform: uppercase;
   display: inline-block;
+  position: relative;
+}
+
+header nav .nav-megamenu .default-content-wrapper > ul > li > a::after,
+header nav .nav-megamenu .default-content-wrapper > ul > li > p > a::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  max-width: 0;
+  height: 1px;
+  background: var(--text-color);
+  transition: max-width 0.3s;
+}
+
+header nav .nav-megamenu .default-content-wrapper > ul > li > a:hover::after,
+header nav .nav-megamenu .default-content-wrapper > ul > li > p > a:hover::after {
+  max-width: 100%;
+}
+
+header nav .nav-megamenu .default-content-wrapper > ul > li > a:hover,
+header nav .nav-megamenu .default-content-wrapper > ul > li > p > a:hover {
+  color: var(--text-color);
+  text-decoration: none;
 }
 
 header nav .nav-megamenu .default-content-wrapper > ul > li > p {
@@ -208,6 +233,7 @@ header nav .nav-megamenu .default-content-wrapper > ul > li > ul > li > a {
   font-size: var(--body-font-size-m);
   text-transform: none;
   color: var(--text-color);
+  transition: color 0.2s;
 }
 
 header nav .nav-megamenu .default-content-wrapper > ul > li > ul > li > a:hover {
