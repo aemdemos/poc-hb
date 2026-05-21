@@ -256,7 +256,7 @@ header nav .nav-tools .default-content-wrapper {
 header nav .nav-tools p {
   display: inline-flex;
   align-items: center;
-  padding-left: 17px;
+  padding-left: 24px;
 }
 
 header nav .nav-tools p:first-child {
@@ -269,14 +269,17 @@ header nav .nav-tools p:first-child a:hover {
   color: var(--text-color);
 }
 
-/* language switcher: no underline, no color change; DE is light, EN (text) is bold */
+/* language switcher: DE (link) light, | border separator, EN (text) bold */
 header nav .nav-tools p:nth-child(2) {
   font-weight: 800;
 }
 
 header nav .nav-tools p:nth-child(2) a {
-  font-weight: 300;
   color: var(--text-color);
+  padding-right: 8px;
+  border-right: 1px solid var(--text-color);
+  margin-right: 8px;
+  font-weight: 300;
 }
 
 header nav .nav-tools p:nth-child(2) a:hover {
