@@ -122,10 +122,10 @@ export default async function decorate(block) {
   nav.prepend(hamburger);
   nav.setAttribute('aria-expanded', 'false');
 
-  // Place home icon next to hamburger
+  // Place home icon inside hamburger area (left group)
   if (homeIcon) {
     homeIcon.remove();
-    hamburger.after(homeIcon);
+    hamburger.append(homeIcon);
   }
 
   // Desktop: open megamenu on hover over hamburger area
