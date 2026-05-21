@@ -33,10 +33,70 @@ function getVideoElement(source, autoplay, background) {
 
   const sourceEl = document.createElement('source');
   sourceEl.setAttribute('src', source);
-  sourceEl.setAttribute('type', `video/${source.split('.').pop()}`);
+  const ext = source.split('/').pop().split('.').pop();
+  const type = ['mp4', 'webm', 'ogg'].includes(ext) ? `video/${ext}` : 'video/mp4';
+  sourceEl.setAttribute('type', type);
   video.append(sourceEl);
 
   return video;
+}
+
+function openVideoModal(link) {
+  const overlay = document.createElement('div');
+  overlay.className = 'video-modal-overlay';
+
+  const modal = document.createElement('div');
+  modal.className = 'video-modal';
+
+  const closeBtn = document.createElement('button');
+  closeBtn.className = 'video-modal-close';
+  closeBtn.setAttribute('type', 'button');
+  closeBtn.setAttribute('aria-label', 'Close video');
+
+  const isYoutube = link.includes('youtube') || link.includes('youtu.be');
+  const isVimeo = link.includes('vimeo');
+
+  if (isYoutube || isVimeo) {
+    const iframe = document.createElement('iframe');
+    const url = new URL(link);
+    if (isYoutube) {
+      const vid = url.searchParams.get('v') || url.pathname.split('/').pop();
+      iframe.src = `https://www.youtube.com/embed/${vid}?autoplay=1`;
+    } else {
+      const vid = url.pathname.split('/').pop();
+      iframe.src = `https://player.vimeo.com/video/${vid}?autoplay=1`;
+    }
+    iframe.setAttribute('allowfullscreen', '');
+    iframe.setAttribute('allow', 'autoplay; encrypted-media');
+    iframe.setAttribute('frameborder', '0');
+    modal.append(iframe);
+  } else {
+    const video = getVideoElement(link, true, false);
+    video.setAttribute('autoplay', '');
+    modal.append(video);
+  }
+
+  modal.append(closeBtn);
+  overlay.append(modal);
+  document.body.append(overlay);
+
+  requestAnimationFrame(() => overlay.classList.add('active'));
+
+  const close = () => {
+    overlay.classList.remove('active');
+    overlay.addEventListener('transitionend', () => overlay.remove(), { once: true });
+    document.body.style.overflow = '';
+  };
+
+  closeBtn.addEventListener('click', close);
+  overlay.addEventListener('click', (e) => {
+    if (e.target === overlay) close();
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') close();
+  }, { once: true });
+
+  document.body.style.overflow = 'hidden';
 }
 
 const loadVideoEmbed = async (block, link, autoplay, background) => {
@@ -88,8 +148,7 @@ export default async function decorate(block) {
         '<div class="video-placeholder-play"><button type="button" title="Play"></button></div>',
       );
       wrapper.addEventListener('click', () => {
-        wrapper.remove();
-        loadVideoEmbed(block, link, true, false);
+        openVideoModal(link);
       });
     }
     block.append(wrapper);
