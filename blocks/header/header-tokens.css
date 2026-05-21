@@ -6,11 +6,11 @@
   --header-nav-padding-desktop: 0 32px;
   --header-nav-gap: 24px;
   --header-nav-gap-desktop: 32px;
-  --header-brand-width: 180px;
+  --header-brand-width: 220px;
   --header-dropdown-width: 200px;
   --header-dropdown-padding: 16px;
   --header-dropdown-left: -24px;
-  --header-hamburger-size: 22px;
-  --header-hamburger-bar-width: 20px;
+  --header-hamburger-size: 24px;
+  --header-hamburger-bar-width: 24px;
   --header-hamburger-bar-height: 2px;
 }

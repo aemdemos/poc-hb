@@ -84,11 +84,11 @@ header nav .nav-hamburger-icon::after {
 }
 
 header nav .nav-hamburger-icon::before {
-  top: -8px;
+  top: -9px;
 }
 
 header nav .nav-hamburger-icon::after {
-  bottom: -8px;
+  bottom: -9px;
 }
 
 /* animated X state */
@@ -114,19 +114,27 @@ header nav .nav-home {
 }
 
 header nav .nav-home .icon {
-  width: 20px;
-  height: 20px;
+  width: 24px;
+  height: 24px;
 }
 
 /* brand */
 header .nav-brand {
   grid-area: brand;
   text-align: center;
-  font-size: var(--heading-font-size-s);
+  font-size: 20px;
   font-weight: 800;
   line-height: 1;
   text-transform: uppercase;
-  letter-spacing: 2px;
+  letter-spacing: 3px;
+}
+
+header nav .nav-brand a {
+  color: var(--text-color);
+}
+
+header nav .nav-brand a:hover {
+  color: var(--text-color);
 }
 
 header nav .nav-brand img {
@@ -226,10 +234,11 @@ header nav .nav-tools {
   grid-area: tools;
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 20px;
   font-size: var(--body-font-size-s);
   font-weight: 300;
   text-transform: uppercase;
+  letter-spacing: 2px;
 }
 
 header nav .nav-tools p {
@@ -239,8 +248,8 @@ header nav .nav-tools p {
 }
 
 header nav .nav-tools .icon {
-  width: 18px;
-  height: 18px;
+  width: 24px;
+  height: 24px;
 }
 
 /* horizontal nav bar */
