@@ -263,6 +263,27 @@ header nav .nav-tools p:first-child {
   padding-left: 0;
 }
 
+/* shop link: underline on hover */
+header nav .nav-tools p:first-child a:hover {
+  text-decoration: underline;
+  color: var(--text-color);
+}
+
+/* language switcher: no underline, no color change; DE is light, EN (text) is bold */
+header nav .nav-tools p:nth-child(2) {
+  font-weight: 800;
+}
+
+header nav .nav-tools p:nth-child(2) a {
+  font-weight: 300;
+  color: var(--text-color);
+}
+
+header nav .nav-tools p:nth-child(2) a:hover {
+  text-decoration: none;
+  color: var(--text-color);
+}
+
 header nav .nav-tools .icon {
   width: 24px;
   height: 24px;
