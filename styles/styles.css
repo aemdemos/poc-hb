@@ -43,7 +43,7 @@
   --max-width-site: 1200px;
 
   /* nav heights */
-  --nav-height: 64px;
+  --nav-height: 70px;
   --breadcrumbs-height: 34px;
   --header-height: var(--nav-height);
 }
