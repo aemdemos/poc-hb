@@ -255,16 +255,22 @@ main .default-content-wrapper p:has(> a:only-child):not(:has(picture)) a:hover {
 main .default-content-wrapper p:has(> a[href$=".pdf"]:only-child) a {
   display: inline-flex;
   align-items: center;
-  gap: 12px;
+  gap: 8px;
   font-size: 16px;
   font-weight: 800;
   text-transform: none;
   letter-spacing: normal;
+  color: var(--text-color);
+}
+
+main .default-content-wrapper p:has(> a[href$=".pdf"]:only-child) a:hover {
+  color: var(--color-gold);
+  text-decoration: none;
 }
 
 main .default-content-wrapper p:has(> a[href$=".pdf"]:only-child) a .icon {
-  width: 24px;
-  height: 24px;
+  width: 20px;
+  height: 20px;
   flex-shrink: 0;
 }
 
