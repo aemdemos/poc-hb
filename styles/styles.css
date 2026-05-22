@@ -291,6 +291,21 @@ main > .section:first-of-type {
   }
 }
 
+/* default content text sections */
+@media (width >= 900px) {
+  main > .section > div.default-content-wrapper {
+    box-sizing: border-box;
+    max-width: 800px;
+    padding: 0 21px;
+  }
+
+  main > .section > div.default-content-wrapper p {
+    line-height: 28px;
+    letter-spacing: 0.2px;
+    margin: 0 0 30px;
+  }
+}
+
 /* section metadata */
 main .section.light,
 main .section.highlight {
