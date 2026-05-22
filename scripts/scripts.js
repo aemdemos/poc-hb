@@ -501,6 +501,26 @@ async function loadLazy(doc) {
 
   loadCSS(`${window.hlx.codeBasePath}/styles/lazy-styles.css`);
   loadFonts();
+
+  if (window.innerWidth >= 900) {
+    const sections = main.querySelectorAll(':scope > .section');
+    sections.forEach((section, i) => {
+      if (i === 0) return;
+      section.classList.add('fade-in-up');
+    });
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    sections.forEach((section, i) => {
+      if (i === 0) return;
+      observer.observe(section);
+    });
+  }
 }
 
 /**
