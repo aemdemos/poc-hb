@@ -58,17 +58,21 @@ footer .footer ul li {
   padding: 4px 0;
 }
 
-/* Contact column spacing: gaps after Germany, after FAX, and between links */
-footer .footer > div > div:first-child p:nth-child(5) {
-  margin-top: 1.2em;
+/* Contact column spacing: match reference double-br gaps */
+footer .footer > div > div:first-child .default-content-wrapper > p:nth-child(5) {
+  margin-top: 1.4em;
 }
 
-footer .footer > div > div:first-child p:nth-child(7) {
-  margin-top: 1.2em;
+footer .footer > div > div:first-child .default-content-wrapper > p:nth-child(6) {
+  margin-top: 0;
 }
 
-footer .footer > div > div:first-child p:nth-child(8) {
-  margin-top: 0.6em;
+footer .footer > div > div:first-child .default-content-wrapper > p:nth-child(7) {
+  margin-top: 1.4em;
+}
+
+footer .footer > div > div:first-child .default-content-wrapper > p:nth-child(8) {
+  margin-top: 1.4em;
 }
 
 /* Contact form and whistleblowing links with arrow */
