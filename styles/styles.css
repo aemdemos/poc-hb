@@ -291,15 +291,15 @@ main > .section:first-of-type {
   }
 }
 
-/* default content text sections */
+/* default content text sections (only-child = text-only sections without blocks) */
 @media (width >= 900px) {
-  main > .section > div.default-content-wrapper {
+  main > .section > div.default-content-wrapper:only-child {
     box-sizing: border-box;
     max-width: 800px;
     padding: 0 21px;
   }
 
-  main > .section > div.default-content-wrapper p {
+  main > .section > div.default-content-wrapper:only-child p {
     line-height: 28px;
     letter-spacing: 0.2px;
     margin: 0 0 30px;
