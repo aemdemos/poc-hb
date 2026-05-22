@@ -11,7 +11,8 @@ main > .section.card-carousel-container > .card-carousel-wrapper {
 
 .card-carousel .card-carousel-slides-container {
   position: relative;
-  overflow: hidden;
+  overflow: clip visible;
+  padding-top: 10px;
 }
 
 .card-carousel .card-carousel-track {
