@@ -394,3 +394,15 @@ main .section.dark img {
   display: block;
   margin: 30px 0 0;
 }
+
+/* Styles for AEM Universal Editor mode */
+   html.adobe-ue-preview,
+   html.adobe-ue-edit {
+     height: unset;
+
+     @media (width >= 900px) {
+      .hero {
+        min-height: 800px;
+      }
+    }
+   }
