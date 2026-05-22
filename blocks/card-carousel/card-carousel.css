@@ -28,6 +28,8 @@ main > .section.card-carousel-container > .card-carousel-wrapper {
   padding: 0;
   position: relative;
   list-style: none;
+  display: flex;
+  flex-direction: column;
 }
 
 .card-carousel .card-carousel-slide::after {
@@ -56,6 +58,13 @@ main > .section.card-carousel-container > .card-carousel-wrapper {
 .card-carousel .cards-card-body {
   margin: 0;
   padding: 20px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.card-carousel .cards-card-body p:last-child {
+  margin-top: auto;
 }
 
 .card-carousel .cards-card-body h3 {
