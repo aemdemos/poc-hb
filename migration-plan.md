@@ -2,7 +2,7 @@
 
 **Source URL:** https://group.hugoboss.com/en/sustainability/strategy  
 **Project Type:** Document Authoring (DA) with Universal Editor (UE)  
-**Status:** Phase 2 In Progress — Header, Hero & Footer Styling Complete  
+**Status:** Phase 2 In Progress — All Core Block Styling Complete  
 **Last Updated:** 2026-05-22
 
 ---
@@ -224,14 +224,17 @@ Based on the source site's class naming (`small-*`, `medium-*`, `large-*`, `xlar
 - [x] Apply global styles to `styles/styles.css`
 - [x] Style Header block (mega menu, horizontal nav bar, utilities, sticky scroll, search panel)
 - [x] Style Hero block (full-width bleed, text overlay, responsive height)
-- [x] Style Footer block (3-column grid, bottom bar, contact spacing, hover effects)
-- [ ] Style Carousel block (facts + cards variants)
-- [ ] Style Accordion block (strategic-pillars + value-chain variants)
-- [ ] Style Card-Carousel block
-- [ ] Style Columns block
-- [ ] Style Video block (placeholder + modal)
-- [ ] Responsive adjustments
-- [ ] Visual QA against source
+- [x] Style Footer block (3-column top + 3-column bottom bar)
+- [x] Style Carousel block (transform-based infinite loop, autoplay 5s, drag/swipe, numbered pagination)
+- [x] Style Accordion block (2px borders, black icon boxes with plus/minus SVGs, gold active state, em-dash list markers)
+- [x] Style Card-Carousel block (40vw cards, center-mode, hover lift + shadow, arrow-shift animation, static variant)
+- [x] Style Columns block (image left + text right, border separator)
+- [x] Style Video block (play button overlay + modal with close button)
+- [x] Style default content sections (text narrowing, CTA links, download links with icon + gold hover)
+- [x] Style dark section (::before pseudo-element black background, white text)
+- [x] Scroll-entry animations (fadeInUp via IntersectionObserver)
+- [ ] Responsive adjustments (mobile breakpoints)
+- [ ] Final visual QA against source
 
 ---
 
