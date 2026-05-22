@@ -162,7 +162,7 @@ export default function decorate(block) {
   // Autoplay
   let autoplayInterval;
   const startAutoplay = () => {
-    autoplayInterval = setInterval(goNext, 3000);
+    autoplayInterval = setInterval(goNext, 5000);
   };
   const stopAutoplay = () => clearInterval(autoplayInterval);
 
