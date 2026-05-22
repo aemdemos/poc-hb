@@ -46,7 +46,6 @@ header nav .nav-hamburger {
   display: flex;
   align-items: center;
   gap: 16px;
-  cursor: pointer;
 }
 
 header nav .nav-hamburger button {
