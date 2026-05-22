@@ -45,6 +45,11 @@ export default async function decorate(block) {
     const { indicatorsNav, buttonsContainer } = createSliderControls(rows.length);
     block.append(indicatorsNav);
     container.append(buttonsContainer);
+
+    const indicators = indicatorsNav.querySelectorAll('button');
+    indicators.forEach((btn, idx) => {
+      btn.textContent = String(idx + 1);
+    });
   }
 
   rows.forEach((row, idx) => {
@@ -58,6 +63,7 @@ export default async function decorate(block) {
   block.prepend(container);
 
   if (!isSingleSlide) {
+    block.dataset.activeSlide = 0;
     initSlider(block);
     slidesWrapper.addEventListener('keydown', (e) => {
       if (e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') return;
@@ -66,5 +72,21 @@ export default async function decorate(block) {
       e.preventDefault();
       showSlide(block, next, 'smooth');
     });
+
+    const slideCount = rows.length;
+    let autoplayInterval;
+    const startAutoplay = () => {
+      autoplayInterval = setInterval(() => {
+        const current = parseInt(block.dataset.activeSlide, 10) || 0;
+        const next = (current + 1) % slideCount;
+        showSlide(block, next, 'smooth');
+        block.dataset.activeSlide = next;
+      }, 3000);
+    };
+    const stopAutoplay = () => clearInterval(autoplayInterval);
+
+    startAutoplay();
+    block.addEventListener('mouseenter', stopAutoplay);
+    block.addEventListener('mouseleave', startAutoplay);
   }
 }
