@@ -252,7 +252,7 @@ main .default-content-wrapper p:has(> a:only-child):not(:has(picture)) a:hover {
 }
 
 /* Download links */
-main .default-content-wrapper p:has(> a[href$=".pdf"]:only-child) a {
+main .default-content-wrapper p:has(> a[href*="pdf"]:only-child) a {
   display: inline-flex;
   align-items: center;
   gap: 8px;
@@ -261,14 +261,15 @@ main .default-content-wrapper p:has(> a[href$=".pdf"]:only-child) a {
   text-transform: none;
   letter-spacing: normal;
   color: var(--text-color);
+  text-decoration: none;
 }
 
-main .default-content-wrapper p:has(> a[href$=".pdf"]:only-child) a:hover {
+main .default-content-wrapper p:has(> a[href*="pdf"]:only-child) a:hover {
   color: var(--color-gold);
   text-decoration: none;
 }
 
-main .default-content-wrapper p:has(> a[href$=".pdf"]:only-child) a .icon {
+main .default-content-wrapper p:has(> a[href*="pdf"]:only-child) a .icon {
   width: 20px;
   height: 20px;
   flex-shrink: 0;
