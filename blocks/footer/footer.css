@@ -14,8 +14,8 @@ footer .footer > div {
 }
 
 footer .footer p {
-  margin: 0.4em 0;
-  line-height: 1.8;
+  margin: 0;
+  line-height: 1.6;
 }
 
 footer .footer strong {
@@ -55,7 +55,8 @@ footer .footer ul {
 }
 
 footer .footer ul li {
-  padding: 4px 0;
+  padding: 0;
+  line-height: 22.4px;
 }
 
 /* Contact column spacing: match reference double-br gaps */
@@ -133,12 +134,12 @@ footer .footer > div > div:last-child {
   footer .footer > div {
     padding: var(--footer-padding-desktop);
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 40px;
+    grid-template-columns: repeat(3, 400px);
+    gap: 0;
   }
 
   footer .footer > div > div {
-    padding: 0;
+    padding: 0 21px;
     border-bottom: none;
   }
 
