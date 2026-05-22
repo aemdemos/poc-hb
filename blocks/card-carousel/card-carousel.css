@@ -1,5 +1,14 @@
 @import url('./card-carousel-tokens.css');
 
+.card-carousel-container {
+  padding: 0;
+}
+
+main > .section.card-carousel-container > .card-carousel-wrapper {
+  max-width: unset;
+  padding: 0;
+}
+
 .card-carousel .card-carousel-slides-container {
   position: relative;
   overflow: hidden;
@@ -11,12 +20,14 @@
 }
 
 .card-carousel .card-carousel-slide {
-  flex: 0 0 40%;
+  flex: 0 0 40vw;
   box-sizing: border-box;
   border: 1px solid #dadada;
   background-color: var(--background-color);
+  margin: 0 20px;
   padding: 0;
   position: relative;
+  list-style: none;
 }
 
 .card-carousel .card-carousel-slide::after {
