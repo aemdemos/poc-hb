@@ -78,11 +78,16 @@ footer .footer .icon {
   height: 24px;
   vertical-align: middle;
   margin-right: 4px;
+  transition: filter 0.2s;
 }
 
 footer .footer .icon img {
   height: 100%;
   width: 100%;
+}
+
+footer .footer a:hover .icon {
+  filter: brightness(0) saturate(100%) invert(52%) sepia(30%) saturate(600%) hue-rotate(350deg) brightness(90%);
 }
 
 /* sections layout */
