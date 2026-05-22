@@ -91,33 +91,40 @@ export default async function decorate(block) {
 
     // Drag/swipe support
     let dragStartX = 0;
-    let dragCurrentX = 0;
+    let dragStartScroll = 0;
     let isDragging = false;
 
     const onDragStart = (e) => {
       isDragging = true;
       dragStartX = e.type.includes('touch') ? e.touches[0].clientX : e.clientX;
-      dragCurrentX = dragStartX;
+      dragStartScroll = slidesWrapper.scrollLeft;
+      slidesWrapper.style.scrollBehavior = 'auto';
+      slidesWrapper.style.scrollSnapType = 'none';
       stopAutoplay();
     };
 
     const onDragMove = (e) => {
       if (!isDragging) return;
       e.preventDefault();
-      dragCurrentX = e.type.includes('touch') ? e.touches[0].clientX : e.clientX;
+      const x = e.type.includes('touch') ? e.touches[0].clientX : e.clientX;
+      const diff = dragStartX - x;
+      slidesWrapper.scrollLeft = dragStartScroll + diff;
     };
 
     const onDragEnd = () => {
       if (!isDragging) return;
       isDragging = false;
-      const diff = dragCurrentX - dragStartX;
-      const threshold = 50;
-      if (diff < -threshold) {
+      slidesWrapper.style.scrollBehavior = 'smooth';
+      slidesWrapper.style.scrollSnapType = 'x mandatory';
+      const diff = slidesWrapper.scrollLeft - dragStartScroll;
+      const threshold = slidesWrapper.offsetWidth * 0.2;
+      if (Math.abs(diff) > threshold) {
         const current = parseInt(block.dataset.activeSlide, 10) || 0;
-        showSlide(block, current + 1, 'smooth');
-      } else if (diff > threshold) {
+        const next = diff > 0 ? current + 1 : current - 1;
+        showSlide(block, next, 'smooth');
+      } else {
         const current = parseInt(block.dataset.activeSlide, 10) || 0;
-        showSlide(block, current - 1, 'smooth');
+        showSlide(block, current, 'smooth');
       }
       startAutoplay();
     };
