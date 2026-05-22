@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+  <title>Search</title>
+  <g id="Search" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linejoin="round">
+    <path d="M15.741663,11.7190078 C15.9041076,11.1744415 15.991358,10.5974173 15.991358,10 C15.991358,6.6862915 13.3070011,4 9.995679,4 C6.68435693,4 4,6.6862915 4,10 C4,13.3137085 6.68435693,16 9.995679,16 C11.6745015,16 13.1921667,15.3095061 14.2805558,14.1968302 C14.7803958,14.6906085 16.6868772,16.6249985 20,20" id="Path" stroke="#000000" stroke-width="2"></path>
+  </g>
+</svg>

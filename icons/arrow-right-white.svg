@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+  <title>Arrow_right_white</title>
+  <g id="Arrow_right_white" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+    <g id="Group" transform="translate(3.000000, 4.984863)" stroke="#FFFFFF" stroke-width="2">
+      <line x1="17" y1="7.01513651" x2="0" y2="7.01513651" id="Path-5"></line>
+      <polyline id="Path-6" transform="translate(12.760087, 7.038453) rotate(-180.000000) translate(-12.760087, -7.038453) " points="16.5201742 -2.34427588e-15 9 7.03845333 16.5201742 14.0769067"></polyline>
+    </g>
+  </g>
+</svg>

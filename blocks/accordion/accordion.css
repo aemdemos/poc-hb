@@ -3,63 +3,120 @@
 .accordion > ul {
   list-style: none;
   margin: 0;
+  margin-left: 100px;
   padding: 0;
+  max-width: 958px;
 }
 
 .accordion > ul > li {
-  border: var(--accordion-item-border-width) solid var(--accordion-item-border-color);
+  border: none;
 }
 
 .accordion > ul > li + li {
-  margin-top: var(--accordion-item-gap);
+  margin-top: 0;
 }
 
-.accordion p {
-  margin-bottom: 0.8em;
+.accordion .accordion-item-label p {
+  margin: 0;
+}
+
+.accordion .accordion-item-body p {
+  font-size: 16px;
+  line-height: 1.6;
+  margin: 0 0 30px;
 }
 
 .accordion .accordion-item-label {
   position: relative;
-  padding: 0 var(--accordion-label-padding-x);
-  padding-right: var(--accordion-label-padding-right);
+  padding: var(--accordion-label-padding);
   cursor: pointer;
-  overflow: auto;
-  transition: background-color var(--accordion-transition-duration);
+  font-size: var(--accordion-label-font-size);
+  font-weight: 800;
+  line-height: var(--accordion-label-line-height);
+  letter-spacing: var(--accordion-label-letter-spacing);
+  text-transform: uppercase;
+  border-top: 2px solid var(--text-color);
+  transition: color var(--accordion-transition-duration);
 }
 
-.accordion li.active .accordion-item-label {
-  background-color: var(--light-color);
+.accordion > ul > li:last-child .accordion-item-label {
+  border-bottom: 2px solid var(--text-color);
 }
 
-.accordion .accordion-item-label:focus,
 .accordion .accordion-item-label:hover {
-  background-color: var(--light-color);
+  color: var(--color-gold);
 }
 
 .accordion .accordion-item-label::after {
   content: '';
   position: absolute;
-  top: 50%;
-  right: var(--accordion-label-icon-right);
-  transform: translateY(-50%) rotate(135deg);
-  width: 6px;
-  height: 6px;
-  border: 2px solid;
-  border-width: 2px 2px 0 0;
-  transition: transform var(--accordion-transition-duration);
+  top: 0;
+  right: 0;
+  width: var(--accordion-icon-size);
+  height: var(--accordion-icon-height);
+  background-color: var(--text-color);
+  background-image: url('/icons/plus-white.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: auto;
+  transition: background-color var(--accordion-transition-duration);
 }
 
 .accordion li.active .accordion-item-label::after {
-  transform: translateY(-50%) rotate(-45deg);
+  background-color: var(--color-gold);
+  background-image: url('/icons/minus-white.svg');
+  background-size: auto;
+}
+
+.accordion li.active .accordion-item-label {
+  color: var(--color-gold);
+  border-top-color: var(--color-gold);
 }
 
 .accordion .accordion-item-body {
   display: none;
-  padding: 0 var(--accordion-body-padding-x);
+  padding: 16px 80px 0 100px;
+  overflow: hidden;
+}
+
+.accordion .accordion-item-body ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 0 0 30px 28px;
+}
+
+.accordion .accordion-item-body ul li {
+  border: none;
+  margin-bottom: 8px;
+  padding-left: 24px;
+  text-indent: -24px;
+}
+
+.accordion .accordion-item-body ul li::before {
+  content: '—';
+  margin-right: 8px;
+}
+
+.accordion .accordion-item-body ol {
+  list-style: none;
+  padding-left: 20px;
+  margin: 8px 0;
+  counter-reset: accordion-ol;
+}
+
+.accordion .accordion-item-body ol li {
+  border: none;
+  margin-bottom: 4px;
+  padding-left: 24px;
+  text-indent: -24px;
+  counter-increment: accordion-ol;
+}
+
+.accordion .accordion-item-body ol li::before {
+  content: counter(accordion-ol) ' | ';
+  margin-right: 4px;
 }
 
 .accordion li.active .accordion-item-body {
   display: block;
-  border-top: var(--accordion-item-border-width) solid var(--accordion-item-border-color);
-  background-color: var(--background-color);
 }

@@ -1,11 +1,11 @@
 /* accordion design tokens */
 :root {
-  --accordion-item-border-width: 1px;
-  --accordion-item-border-color: #dadada;
-  --accordion-item-gap: 24px;
-  --accordion-label-padding-x: 16px;
-  --accordion-label-padding-right: 46px;
-  --accordion-label-icon-right: 18px;
-  --accordion-body-padding-x: 16px;
-  --accordion-transition-duration: 0.2s;
+  --accordion-label-font-size: 16px;
+  --accordion-label-line-height: 28px;
+  --accordion-label-letter-spacing: 0.2px;
+  --accordion-label-padding: 16px 80px 13px 16px;
+  --accordion-body-padding: 16px 16px 0;
+  --accordion-icon-size: 62px;
+  --accordion-icon-height: 57px;
+  --accordion-transition-duration: 0.3s;
 }

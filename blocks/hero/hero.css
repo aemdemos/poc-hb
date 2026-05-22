@@ -1,14 +1,24 @@
 @import url('./hero-tokens.css');
 
-.hero-container .hero-wrapper {
+.hero-container {
+  padding: 0;
+  margin: 0;
+}
+
+main > .section.hero-container > .hero-wrapper {
   max-width: unset;
   padding: 0;
+  margin: 0;
 }
 
 .hero {
   position: relative;
   padding: var(--hero-padding);
   min-height: var(--hero-min-height);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
 }
 
 .hero h1 {
@@ -16,14 +26,19 @@
   margin-left: auto;
   margin-right: auto;
   color: var(--background-color);
+  font-size: 36px;
+  line-height: 1.06;
+  letter-spacing: 2px;
+  text-align: center;
+  text-transform: uppercase;
+  position: relative;
+  z-index: 1;
 }
 
 .hero picture {
   position: absolute;
-  z-index: -1;
+  z-index: 0;
   inset: 0;
-  object-fit: cover;
-  box-sizing: border-box;
 }
 
 .hero img {
@@ -35,5 +50,12 @@
 @media (width >= 900px) {
   .hero {
     padding: var(--hero-padding-desktop);
+    min-height: var(--hero-min-height-desktop);
+  }
+
+  .hero h1 {
+    font-size: 72px;
+    line-height: 76px;
+    letter-spacing: 2px;
   }
 }

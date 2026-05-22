@@ -11,7 +11,11 @@ export default function decorate(block) {
     const [label, body] = [...li.children];
     if (label !== null && label !== undefined) {
       label.className = 'accordion-item-label';
-      label.addEventListener('click', () => li.classList.toggle('active'));
+      label.addEventListener('click', () => {
+        const isActive = li.classList.contains('active');
+        ul.querySelectorAll('.accordion-item.active').forEach((item) => item.classList.remove('active'));
+        if (!isActive) li.classList.add('active');
+      });
     }
     if (body !== null && body !== undefined) body.className = 'accordion-item-body';
 

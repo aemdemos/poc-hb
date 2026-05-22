@@ -1,1 +1,26 @@
 /* add global styles that can be loaded post LCP here */
+
+/* scroll-entry animation */
+@keyframes fade-in-up {
+  0% {
+    opacity: 0.001;
+    transform: translate3d(0, 50px, 0);
+  }
+
+  100% {
+    opacity: 1;
+    transform: none;
+    will-change: auto;
+  }
+}
+
+@media (width >= 900px) {
+  main > .section.fade-in-up {
+    opacity: 0.001;
+    transform: translate3d(0, 50px, 0);
+  }
+
+  main > .section.fade-in-up.animate {
+    animation: fade-in-up 0.5s ease forwards;
+  }
+}

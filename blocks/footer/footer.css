@@ -1,8 +1,10 @@
 @import url('./footer-tokens.css');
 
 footer {
-  background-color: var(--light-color);
-  font-size: var(--body-font-size-xs);
+  background-color: var(--text-color);
+  color: var(--background-color);
+  font-size: var(--body-font-size-s);
+  font-weight: 300;
 }
 
 footer .footer > div {
@@ -13,10 +15,157 @@ footer .footer > div {
 
 footer .footer p {
   margin: 0;
+  line-height: 1.6;
+}
+
+footer .footer strong {
+  font-weight: 700;
+}
+
+footer .footer > div > div:last-child strong {
+  font-weight: 300;
+}
+
+footer .footer a {
+  color: var(--background-color);
+  text-decoration: none;
+}
+
+footer .footer a:hover {
+  color: var(--color-gold);
+  text-decoration: none;
+}
+
+footer .footer h4 {
+  color: var(--background-color);
+  font-size: 28px;
+  font-weight: 800;
+  line-height: 35px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-top: 0;
+  margin-bottom: 30px;
+  padding-bottom: 0;
+}
+
+footer .footer ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+footer .footer ul li {
+  padding: 0;
+  line-height: 22.4px;
+}
+
+/* Contact column spacing: match reference double-br gaps */
+
+/* Child 6 = TEL (gap above, after Germany) */
+footer .footer > div > div:first-child .default-content-wrapper > :nth-child(6) {
+  margin-top: 1.4em;
+}
+
+/* Child 7 = FAX (no gap, tight with TEL) */
+footer .footer > div > div:first-child .default-content-wrapper > :nth-child(7) {
+  margin-top: 0;
+}
+
+/* Child 8 = CONTACT FORM (gap above, after FAX) */
+footer .footer > div > div:first-child .default-content-wrapper > :nth-child(8) {
+  margin-top: 1.4em;
+}
+
+/* Child 9 = WHISTLEBLOWING (gap above, after CONTACT FORM) */
+footer .footer > div > div:first-child .default-content-wrapper > :nth-child(9) {
+  margin-top: 1.4em;
+}
+
+/* Contact form and whistleblowing links with arrow */
+footer .footer a[href*="contact"],
+footer .footer a[href*="whistleblowing"] {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 800;
+  text-transform: uppercase;
+  font-size: var(--body-font-size-s);
+}
+
+footer .footer a[href*="contact"]::after,
+footer .footer a[href*="whistleblowing"]::after {
+  content: '';
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background: url('/icons/arrow-right-white.svg') no-repeat center;
+  background-size: 20px 20px;
+}
+
+/* Fake products icon */
+footer .footer .icon {
+  width: 24px;
+  height: 24px;
+  vertical-align: middle;
+  margin-right: 4px;
+  transition: filter 0.2s;
+}
+
+footer .footer .icon img {
+  height: 100%;
+  width: 100%;
+}
+
+footer .footer a:hover .icon {
+  filter: brightness(0) saturate(100%) invert(52%) sepia(30%) saturate(600%) hue-rotate(350deg) brightness(90%);
+}
+
+/* sections layout */
+footer .footer > div > div {
+  padding: 24px 0;
+  border-bottom: 1px solid rgb(255 255 255 / 15%);
+}
+
+footer .footer > div > div:last-child {
+  border-bottom: none;
 }
 
 @media (width >= 900px) {
   footer .footer > div {
     padding: var(--footer-padding-desktop);
+    display: grid;
+    grid-template-columns: repeat(3, 400px);
+    gap: 0;
+  }
+
+  footer .footer > div > div {
+    padding: 0 21px 40px;
+    border-bottom: none;
+  }
+
+  /* Bottom bar: horizontal layout */
+  footer .footer > div > div:last-child {
+    grid-column: 1 / -1;
+    padding: 25px 0 13px;
+    border-top: 1px solid rgb(74 74 74);
+  }
+
+  footer .footer > div > div:last-child .default-content-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-items: center;
+  }
+
+  footer .footer > div > div:last-child p {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    white-space: nowrap;
+    margin: 0;
+    padding: 0 21px;
+  }
+
+  footer .footer > div > div:last-child p:last-child {
+    justify-content: flex-end;
   }
 }
