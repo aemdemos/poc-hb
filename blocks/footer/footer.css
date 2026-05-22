@@ -111,8 +111,8 @@ footer .footer > div > div:last-child {
   /* Bottom bar: horizontal layout */
   footer .footer > div > div:last-child {
     grid-column: 1 / -1;
-    display: flex;
-    flex-flow: row wrap;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
     align-items: center;
     padding: 25px 0 13px;
     border-top: 1px solid rgb(74 74 74);
@@ -124,9 +124,7 @@ footer .footer > div > div:last-child {
     gap: 12px;
     white-space: nowrap;
     margin: 0;
-    width: 33.333%;
     padding: 0 21px;
-    box-sizing: border-box;
   }
 
   footer .footer > div > div:last-child p:last-child {
