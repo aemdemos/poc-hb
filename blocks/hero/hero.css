@@ -2,11 +2,13 @@
 
 .hero-container {
   padding: 0;
+  margin: 0;
 }
 
-.hero-container .hero-wrapper {
+main > .section.hero-container > .hero-wrapper {
   max-width: unset;
   padding: 0;
+  margin: 0;
 }
 
 .hero {
