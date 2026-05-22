@@ -112,6 +112,7 @@ footer .footer > div > div:last-child {
   footer .footer > div > div:last-child {
     grid-column: 1 / -1;
     display: flex;
+    flex-flow: row nowrap;
     align-items: center;
     gap: 40px;
     padding-top: 40px;
@@ -119,10 +120,12 @@ footer .footer > div > div:last-child {
   }
 
   footer .footer > div > div:last-child p {
-    display: flex;
+    display: inline-flex;
     align-items: center;
     gap: 12px;
     white-space: nowrap;
+    margin: 0;
+    flex-shrink: 0;
   }
 
   footer .footer > div > div:last-child p:last-child {
