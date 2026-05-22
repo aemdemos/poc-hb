@@ -59,19 +59,24 @@ footer .footer ul li {
 }
 
 /* Contact column spacing: match reference double-br gaps */
-footer .footer > div > div:first-child .default-content-wrapper > p:nth-child(5) {
+
+/* Child 6 = TEL (gap above, after Germany) */
+footer .footer > div > div:first-child .default-content-wrapper > :nth-child(6) {
   margin-top: 1.4em;
 }
 
-footer .footer > div > div:first-child .default-content-wrapper > p:nth-child(6) {
+/* Child 7 = FAX (no gap, tight with TEL) */
+footer .footer > div > div:first-child .default-content-wrapper > :nth-child(7) {
   margin-top: 0;
 }
 
-footer .footer > div > div:first-child .default-content-wrapper > p:nth-child(7) {
+/* Child 8 = CONTACT FORM (gap above, after FAX) */
+footer .footer > div > div:first-child .default-content-wrapper > :nth-child(8) {
   margin-top: 1.4em;
 }
 
-footer .footer > div > div:first-child .default-content-wrapper > p:nth-child(8) {
+/* Child 9 = WHISTLEBLOWING (gap above, after CONTACT FORM) */
+footer .footer > div > div:first-child .default-content-wrapper > :nth-child(9) {
   margin-top: 1.4em;
 }
 
