@@ -81,14 +81,20 @@ export default function decorate(block) {
   let isTransitioning = false;
   const allSlides = track.querySelectorAll('.card-carousel-slide');
 
-  function getSlideWidth() {
-    return allSlides[0].getBoundingClientRect().width;
+  function getSlideStep() {
+    const slide = allSlides[0];
+    const style = window.getComputedStyle(slide);
+    const marginLeft = parseFloat(style.marginLeft) || 0;
+    const marginRight = parseFloat(style.marginRight) || 0;
+    return slide.getBoundingClientRect().width + marginLeft + marginRight;
   }
 
   function setTrackPosition(animate) {
-    const slideWidth = getSlideWidth();
+    const slideStep = getSlideStep();
+    const slideWidth = allSlides[0].getBoundingClientRect().width;
     const containerWidth = container.getBoundingClientRect().width;
-    const offset = (containerWidth / 2) - (slideWidth / 2) - (trackIndex * slideWidth);
+    const marginLeft = parseFloat(window.getComputedStyle(allSlides[0]).marginLeft) || 0;
+    const offset = (containerWidth / 2) - (slideWidth / 2) - (trackIndex * slideStep) - marginLeft;
     track.style.transition = animate ? 'transform 0.5s cubic-bezier(0.2, 0.89, 0.75, 0.99)' : 'none';
     track.style.transform = `translateX(${offset}px)`;
   }
