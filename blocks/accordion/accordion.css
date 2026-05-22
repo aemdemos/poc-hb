@@ -58,13 +58,14 @@
   background-image: url('/icons/plus-white.svg');
   background-repeat: no-repeat;
   background-position: center;
-  background-size: 16px 16px;
+  background-size: auto;
   transition: background-color var(--accordion-transition-duration);
 }
 
 .accordion li.active .accordion-item-label::after {
   background-color: var(--color-gold);
   background-image: url('/icons/minus-white.svg');
+  background-size: auto;
 }
 
 .accordion li.active .accordion-item-label {
