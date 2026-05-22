@@ -41,6 +41,7 @@ main > .section.carousel-container > .carousel-wrapper {
   position: relative;
   width: 100%;
   aspect-ratio: var(--carousel-slide-aspect-ratio);
+  max-height: 500px;
 }
 
 .carousel .carousel-slide .carousel-slide-image picture {
