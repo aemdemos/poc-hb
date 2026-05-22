@@ -73,6 +73,10 @@ function openVideoModal(link) {
   } else {
     const video = getVideoElement(link, true, false);
     video.setAttribute('autoplay', '');
+    video.addEventListener('click', () => {
+      if (video.paused) video.play();
+      else video.pause();
+    });
     modal.append(video);
   }
 
