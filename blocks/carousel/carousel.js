@@ -94,20 +94,20 @@ export default async function decorate(block) {
     let dragCurrentX = 0;
     let isDragging = false;
 
-    function onDragStart(e) {
+    const onDragStart = (e) => {
       isDragging = true;
       dragStartX = e.type.includes('touch') ? e.touches[0].clientX : e.clientX;
       dragCurrentX = dragStartX;
       stopAutoplay();
-    }
+    };
 
-    function onDragMove(e) {
+    const onDragMove = (e) => {
       if (!isDragging) return;
       e.preventDefault();
       dragCurrentX = e.type.includes('touch') ? e.touches[0].clientX : e.clientX;
-    }
+    };
 
-    function onDragEnd() {
+    const onDragEnd = () => {
       if (!isDragging) return;
       isDragging = false;
       const diff = dragCurrentX - dragStartX;
@@ -120,7 +120,7 @@ export default async function decorate(block) {
         showSlide(block, current - 1, 'smooth');
       }
       startAutoplay();
-    }
+    };
 
     slidesWrapper.addEventListener('mousedown', onDragStart);
     slidesWrapper.addEventListener('mousemove', onDragMove);
