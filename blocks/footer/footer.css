@@ -44,7 +44,7 @@ footer .footer h4 {
   letter-spacing: 1px;
   text-transform: uppercase;
   margin-top: 0;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
   padding-bottom: 0;
 }
 
@@ -139,7 +139,7 @@ footer .footer > div > div:last-child {
   }
 
   footer .footer > div > div {
-    padding: 0 21px;
+    padding: 0 21px 40px;
     border-bottom: none;
   }
 
