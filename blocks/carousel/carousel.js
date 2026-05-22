@@ -88,5 +88,49 @@ export default async function decorate(block) {
     startAutoplay();
     block.addEventListener('mouseenter', stopAutoplay);
     block.addEventListener('mouseleave', startAutoplay);
+
+    // Drag/swipe support
+    let dragStartX = 0;
+    let dragCurrentX = 0;
+    let isDragging = false;
+
+    function onDragStart(e) {
+      isDragging = true;
+      dragStartX = e.type.includes('touch') ? e.touches[0].clientX : e.clientX;
+      dragCurrentX = dragStartX;
+      stopAutoplay();
+    }
+
+    function onDragMove(e) {
+      if (!isDragging) return;
+      e.preventDefault();
+      dragCurrentX = e.type.includes('touch') ? e.touches[0].clientX : e.clientX;
+    }
+
+    function onDragEnd() {
+      if (!isDragging) return;
+      isDragging = false;
+      const diff = dragCurrentX - dragStartX;
+      const threshold = 50;
+      if (diff < -threshold) {
+        const current = parseInt(block.dataset.activeSlide, 10) || 0;
+        showSlide(block, current + 1, 'smooth');
+      } else if (diff > threshold) {
+        const current = parseInt(block.dataset.activeSlide, 10) || 0;
+        showSlide(block, current - 1, 'smooth');
+      }
+      startAutoplay();
+    }
+
+    slidesWrapper.addEventListener('mousedown', onDragStart);
+    slidesWrapper.addEventListener('mousemove', onDragMove);
+    slidesWrapper.addEventListener('mouseup', onDragEnd);
+    slidesWrapper.addEventListener('mouseleave', () => { if (isDragging) onDragEnd(); });
+    slidesWrapper.addEventListener('touchstart', onDragStart, { passive: true });
+    slidesWrapper.addEventListener('touchmove', onDragMove, { passive: false });
+    slidesWrapper.addEventListener('touchend', onDragEnd);
+    slidesWrapper.style.cursor = 'grab';
+    slidesWrapper.addEventListener('mousedown', () => { slidesWrapper.style.cursor = 'grabbing'; });
+    slidesWrapper.addEventListener('mouseup', () => { slidesWrapper.style.cursor = 'grab'; });
   }
 }
