@@ -67,8 +67,8 @@ main > .section.card-carousel-container > .card-carousel-wrapper {
 }
 
 .card-carousel .cards-card-body p {
-  font-size: var(--card-carousel-description-font-size);
-  line-height: 1.6;
+  font-size: 16px;
+  line-height: 28px;
   margin: 0 0 16px;
   max-width: none;
 }
