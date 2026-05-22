@@ -60,15 +60,6 @@ main > .section.carousel-container > .carousel-wrapper {
   z-index: 1;
   padding: 0 calc((100vw - var(--max-width-site)) / 2) 40px;
   color: white;
-}
-
-.carousel .carousel-slide .carousel-slide-content {
-  z-index: 1;
-  position: relative;
-  max-width: 800px;
-  margin: 0;
-  padding: 0 24px 40px 141px;
-  color: white;
   background-color: transparent;
 }
 
