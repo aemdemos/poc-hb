@@ -235,6 +235,22 @@ main img {
   width: 100%;
 }
 
+/* CTA links - standalone links in paragraphs */
+main .default-content-wrapper p:has(> a:only-child):not(:has(picture)) a {
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-color);
+  text-decoration: none;
+}
+
+main .default-content-wrapper p:has(> a:only-child):not(:has(picture)) a:hover {
+  color: var(--color-gold);
+  text-decoration: none;
+}
+
 /* sections */
 main > .section {
   padding: 25px 0;
