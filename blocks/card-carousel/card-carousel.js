@@ -159,16 +159,20 @@ export default function decorate(block) {
   setTrackPosition(false);
   updateActiveState();
 
-  // Autoplay
+  // Autoplay (disabled for static variant)
+  const isStatic = block.classList.contains('static');
   let autoplayInterval;
   const startAutoplay = () => {
+    if (isStatic) return;
     autoplayInterval = setInterval(goNext, 5000);
   };
   const stopAutoplay = () => clearInterval(autoplayInterval);
 
-  startAutoplay();
-  block.addEventListener('mouseenter', stopAutoplay);
-  block.addEventListener('mouseleave', startAutoplay);
+  if (!isStatic) {
+    startAutoplay();
+    block.addEventListener('mouseenter', stopAutoplay);
+    block.addEventListener('mouseleave', startAutoplay);
+  }
 
   // Drag/swipe support
   let dragStartX = 0;

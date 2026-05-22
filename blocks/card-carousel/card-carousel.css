@@ -220,3 +220,16 @@ main > .section.card-carousel-container > .card-carousel-wrapper {
   background-color: transparent;
   color: var(--color-gold);
 }
+
+/* Static variant - image-only cards, no autoplay */
+.card-carousel.static .card-carousel-slide {
+  border: none;
+}
+
+.card-carousel.static .card-carousel-slide img {
+  aspect-ratio: auto;
+}
+
+.card-carousel.static .cards-card-body:empty {
+  display: none;
+}
