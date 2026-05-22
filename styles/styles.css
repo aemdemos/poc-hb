@@ -40,7 +40,7 @@
   --heading-font-size-xs: 14px;
 
   /* layout */
-  --max-width-site: 1200px;
+  --max-width-site: 1158px;
 
   /* nav heights */
   --nav-height: 70px;
@@ -287,7 +287,7 @@ main > .section:first-of-type {
   }
 
   main > .section > div:not(.bg-image) {
-    padding: 0 32px;
+    padding: 0 24px;
   }
 }
 
