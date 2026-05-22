@@ -23,9 +23,7 @@ main > .section.carousel-container > .carousel-wrapper {
 
 .carousel .carousel-slides {
   display: flex;
-  scroll-behavior: smooth;
-  scroll-snap-type: x mandatory;
-  overflow: scroll clip;
+  overflow: hidden;
 }
 
 .carousel .carousel-slides::-webkit-scrollbar {

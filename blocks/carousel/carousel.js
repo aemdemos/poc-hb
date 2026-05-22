@@ -1,7 +1,5 @@
 import { moveInstrumentation, getBlockId } from '../../scripts/scripts.js';
-import { createSliderControls, initSlider, showSlide } from '../../scripts/slider.js';
-
-export { showSlide };
+import { createSliderControls } from '../../scripts/slider.js';
 
 function createSlide(row, slideIndex, carouselId) {
   const slide = document.createElement('li');
@@ -29,22 +27,43 @@ export default async function decorate(block) {
   block.setAttribute('role', 'region');
   block.setAttribute('aria-roledescription', 'Carousel');
 
-  const rows = block.querySelectorAll(':scope > div');
-  const isSingleSlide = rows.length < 2;
+  const rows = [...block.querySelectorAll(':scope > div')];
+  const slideCount = rows.length;
+  const isSingleSlide = slideCount < 2;
 
   const container = document.createElement('div');
   container.classList.add('carousel-slides-container');
 
-  const slidesWrapper = document.createElement('ul');
-  slidesWrapper.classList.add('carousel-slides');
-  slidesWrapper.setAttribute('tabindex', '0');
-  slidesWrapper.setAttribute('aria-label', 'Carousel slides');
-  block.prepend(slidesWrapper);
+  const track = document.createElement('ul');
+  track.classList.add('carousel-slides');
+  track.setAttribute('tabindex', '0');
+  track.setAttribute('aria-label', 'Carousel slides');
 
+  const slides = rows.map((row, idx) => {
+    const slide = createSlide(row, idx, blockId);
+    moveInstrumentation(row, slide);
+    row.remove();
+    return slide;
+  });
+
+  // Clone last and first for infinite loop
+  const cloneLast = slides[slideCount - 1].cloneNode(true);
+  cloneLast.classList.add('carousel-clone');
+  const cloneFirst = slides[0].cloneNode(true);
+  cloneFirst.classList.add('carousel-clone');
+
+  track.append(cloneLast);
+  slides.forEach((slide) => track.append(slide));
+  track.append(cloneFirst);
+
+  container.append(track);
+  block.prepend(container);
+
+  let indicatorsNav = null;
   if (!isSingleSlide) {
-    const { indicatorsNav, buttonsContainer } = createSliderControls(rows.length);
+    const controls = createSliderControls(slideCount);
+    indicatorsNav = controls.indicatorsNav;
     block.append(indicatorsNav);
-    container.append(buttonsContainer);
 
     const indicators = indicatorsNav.querySelectorAll('button');
     indicators.forEach((btn, idx) => {
@@ -52,36 +71,87 @@ export default async function decorate(block) {
     });
   }
 
-  rows.forEach((row, idx) => {
-    const slide = createSlide(row, idx, blockId);
-    moveInstrumentation(row, slide);
-    slidesWrapper.append(slide);
-    row.remove();
+  // Transform-based infinite carousel
+  let trackIndex = 1; // index 0 = clone of last, 1 = first real slide
+  let isTransitioning = false;
+  const allSlides = track.querySelectorAll('.carousel-slide');
+
+  const getSlideWidth = () => allSlides[0].getBoundingClientRect().width;
+
+  const setTrackPosition = (animate) => {
+    const slideWidth = getSlideWidth();
+    const offset = -(trackIndex * slideWidth);
+    track.style.transition = animate ? 'transform 0.5s cubic-bezier(0.2, 0.89, 0.75, 0.99)' : 'none';
+    track.style.transform = `translateX(${offset}px)`;
+  };
+
+  const updateActiveState = () => {
+    const realIndex = (((trackIndex - 1) % slideCount) + slideCount) % slideCount;
+    if (indicatorsNav) {
+      indicatorsNav.querySelectorAll('button').forEach((btn, i) => {
+        if (i === realIndex) btn.setAttribute('disabled', 'true');
+        else btn.removeAttribute('disabled');
+      });
+    }
+    block.dataset.activeSlide = realIndex;
+  };
+
+  const goNext = () => {
+    if (isTransitioning) return;
+    isTransitioning = true;
+    trackIndex += 1;
+    setTrackPosition(true);
+    updateActiveState();
+  };
+
+  const goPrev = () => {
+    if (isTransitioning) return;
+    isTransitioning = true;
+    trackIndex -= 1;
+    setTrackPosition(true);
+    updateActiveState();
+  };
+
+  track.addEventListener('transitionend', () => {
+    isTransitioning = false;
+    if (trackIndex >= slideCount + 1) {
+      trackIndex = 1;
+      setTrackPosition(false);
+    }
+    if (trackIndex <= 0) {
+      trackIndex = slideCount;
+      setTrackPosition(false);
+    }
+    updateActiveState();
   });
 
-  container.append(slidesWrapper);
-  block.prepend(container);
+  if (indicatorsNav) {
+    indicatorsNav.querySelectorAll('button').forEach((btn, i) => {
+      btn.addEventListener('click', () => {
+        if (isTransitioning) return;
+        isTransitioning = true;
+        trackIndex = i + 1;
+        setTrackPosition(true);
+        updateActiveState();
+      });
+    });
+  }
+
+  // Initialize
+  setTrackPosition(false);
+  updateActiveState();
 
   if (!isSingleSlide) {
-    block.dataset.activeSlide = 0;
-    initSlider(block);
-    slidesWrapper.addEventListener('keydown', (e) => {
-      if (e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') return;
-      const current = parseInt(block.dataset.activeSlide, 10) || 0;
-      const next = e.key === 'ArrowLeft' ? current - 1 : current + 1;
-      e.preventDefault();
-      showSlide(block, next, 'smooth');
+    // Keyboard navigation
+    track.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft') { e.preventDefault(); goPrev(); }
+      if (e.key === 'ArrowRight') { e.preventDefault(); goNext(); }
     });
 
-    const slideCount = rows.length;
+    // Autoplay
     let autoplayInterval;
     const startAutoplay = () => {
-      autoplayInterval = setInterval(() => {
-        const current = parseInt(block.dataset.activeSlide, 10) || 0;
-        const next = (current + 1) % slideCount;
-        showSlide(block, next, 'smooth');
-        block.dataset.activeSlide = next;
-      }, 3000);
+      autoplayInterval = setInterval(goNext, 5000);
     };
     const stopAutoplay = () => clearInterval(autoplayInterval);
 
@@ -91,53 +161,51 @@ export default async function decorate(block) {
 
     // Drag/swipe support
     let dragStartX = 0;
-    let dragStartScroll = 0;
+    let dragCurrentX = 0;
     let isDragging = false;
+    let dragOffset = 0;
 
     const onDragStart = (e) => {
+      if (isTransitioning) return;
       isDragging = true;
       dragStartX = e.type.includes('touch') ? e.touches[0].clientX : e.clientX;
-      dragStartScroll = slidesWrapper.scrollLeft;
-      slidesWrapper.style.scrollBehavior = 'auto';
-      slidesWrapper.style.scrollSnapType = 'none';
+      dragOffset = -(trackIndex * getSlideWidth());
+      track.style.transition = 'none';
       stopAutoplay();
     };
 
     const onDragMove = (e) => {
       if (!isDragging) return;
       e.preventDefault();
-      const x = e.type.includes('touch') ? e.touches[0].clientX : e.clientX;
-      const diff = dragStartX - x;
-      slidesWrapper.scrollLeft = dragStartScroll + diff;
+      dragCurrentX = e.type.includes('touch') ? e.touches[0].clientX : e.clientX;
+      const diff = dragCurrentX - dragStartX;
+      track.style.transform = `translateX(${dragOffset + diff}px)`;
     };
 
     const onDragEnd = () => {
       if (!isDragging) return;
       isDragging = false;
-      slidesWrapper.style.scrollBehavior = 'smooth';
-      slidesWrapper.style.scrollSnapType = 'x mandatory';
-      const diff = slidesWrapper.scrollLeft - dragStartScroll;
-      const threshold = slidesWrapper.offsetWidth * 0.2;
-      if (Math.abs(diff) > threshold) {
-        const current = parseInt(block.dataset.activeSlide, 10) || 0;
-        const next = diff > 0 ? current + 1 : current - 1;
-        showSlide(block, next, 'smooth');
+      const diff = dragCurrentX - dragStartX;
+      const threshold = getSlideWidth() * 0.2;
+      if (diff < -threshold) {
+        goNext();
+      } else if (diff > threshold) {
+        goPrev();
       } else {
-        const current = parseInt(block.dataset.activeSlide, 10) || 0;
-        showSlide(block, current, 'smooth');
+        setTrackPosition(true);
       }
       startAutoplay();
     };
 
-    slidesWrapper.addEventListener('mousedown', onDragStart);
-    slidesWrapper.addEventListener('mousemove', onDragMove);
-    slidesWrapper.addEventListener('mouseup', onDragEnd);
-    slidesWrapper.addEventListener('mouseleave', () => { if (isDragging) onDragEnd(); });
-    slidesWrapper.addEventListener('touchstart', onDragStart, { passive: true });
-    slidesWrapper.addEventListener('touchmove', onDragMove, { passive: false });
-    slidesWrapper.addEventListener('touchend', onDragEnd);
-    slidesWrapper.style.cursor = 'grab';
-    slidesWrapper.addEventListener('mousedown', () => { slidesWrapper.style.cursor = 'grabbing'; });
-    slidesWrapper.addEventListener('mouseup', () => { slidesWrapper.style.cursor = 'grab'; });
+    container.addEventListener('mousedown', onDragStart);
+    container.addEventListener('mousemove', onDragMove);
+    container.addEventListener('mouseup', onDragEnd);
+    container.addEventListener('mouseleave', () => { if (isDragging) onDragEnd(); });
+    container.addEventListener('touchstart', onDragStart, { passive: true });
+    container.addEventListener('touchmove', onDragMove, { passive: false });
+    container.addEventListener('touchend', onDragEnd);
+    container.style.cursor = 'grab';
+    container.addEventListener('mousedown', () => { container.style.cursor = 'grabbing'; });
+    container.addEventListener('mouseup', () => { container.style.cursor = 'grab'; });
   }
 }
