@@ -59,7 +59,7 @@
   :root {
     /* heading sizes scale up on desktop */
     --heading-font-size-xxl: 48px;
-    --heading-font-size-xl: 25px;
+    --heading-font-size-xl: 28px;
     --heading-font-size-l: 24px;
     --heading-font-size-m: 20px;
     --heading-font-size-s: 18px;
@@ -293,11 +293,11 @@ main > .section:first-of-type {
 
 /* default content text sections */
 @media (width >= 900px) {
-  main > .section > div.default-content-wrapper p {
+  main > .section > div.default-content-wrapper:only-child p {
     max-width: 758px;
+    margin: 0 0 30px 120px;
     line-height: 28px;
     letter-spacing: 0.2px;
-    margin: 0 0 30px;
   }
 
   main > .section > div.default-content-wrapper h2 {
