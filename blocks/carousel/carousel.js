@@ -56,6 +56,11 @@ export default async function decorate(block) {
   slides.forEach((slide) => track.append(slide));
   track.append(cloneFirst);
 
+  // Force eager loading on all carousel images
+  track.querySelectorAll('img').forEach((img) => {
+    img.loading = 'eager';
+  });
+
   container.append(track);
   block.prepend(container);
 
