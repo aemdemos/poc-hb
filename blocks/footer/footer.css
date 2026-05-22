@@ -18,6 +18,10 @@ footer .footer p {
   line-height: 1.8;
 }
 
+footer .footer strong {
+  font-weight: 300;
+}
+
 footer .footer a {
   color: var(--background-color);
   text-decoration: none;
@@ -30,7 +34,7 @@ footer .footer a:hover {
 
 footer .footer h4 {
   color: var(--background-color);
-  font-size: var(--body-font-size-m);
+  font-size: 16px;
   font-weight: 800;
   text-transform: uppercase;
   margin-top: 0;
@@ -47,9 +51,38 @@ footer .footer ul li {
   padding: 4px 0;
 }
 
-footer .footer .icon {
+/* Contact form and whistleblowing links with arrow */
+footer .footer a[href*="contact"],
+footer .footer a[href*="whistleblowing"] {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 800;
+  text-transform: uppercase;
+  font-size: var(--body-font-size-s);
+}
+
+footer .footer a[href*="contact"]::after,
+footer .footer a[href*="whistleblowing"]::after {
+  content: '';
+  display: inline-block;
   width: 20px;
   height: 20px;
+  background: url('/icons/arrow-right-white.svg') no-repeat center;
+  background-size: 20px 20px;
+}
+
+/* Fake products icon */
+footer .footer .icon {
+  width: 24px;
+  height: 24px;
+  vertical-align: middle;
+  margin-right: 4px;
+}
+
+footer .footer .icon img {
+  height: 100%;
+  width: 100%;
 }
 
 /* sections layout */
@@ -75,11 +108,12 @@ footer .footer > div > div:last-child {
     border-bottom: none;
   }
 
+  /* Bottom bar: horizontal layout */
   footer .footer > div > div:last-child {
     grid-column: 1 / -1;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    gap: 40px;
     padding-top: 40px;
     border-top: 1px solid rgb(255 255 255 / 15%);
   }
@@ -88,5 +122,10 @@ footer .footer > div > div:last-child {
     display: flex;
     align-items: center;
     gap: 12px;
+    white-space: nowrap;
+  }
+
+  footer .footer > div > div:last-child p:last-child {
+    margin-left: auto;
   }
 }
