@@ -159,7 +159,7 @@ main > .section.card-carousel-container > .card-carousel-wrapper {
   background-color: transparent;
   background-repeat: no-repeat;
   background-position: center;
-  background-size: 56px 24px;
+  background-size: auto;
   cursor: pointer;
 }
 
