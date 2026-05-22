@@ -402,7 +402,6 @@ main .section.dark img {
 
      @media (width >= 900px) {
       .hero {
-        padding: var(--hero-padding-desktop);
         min-height: 800px;
       }
     }
