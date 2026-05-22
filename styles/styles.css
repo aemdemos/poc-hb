@@ -252,7 +252,7 @@ main .default-content-wrapper p:has(> a:only-child):not(:has(picture)) a:hover {
 }
 
 /* Download links */
-main .default-content-wrapper p:has(> a[href*="pdf"]:only-child) a {
+main .default-content-wrapper p:has(> a[href$=".pdf"]:only-child) a {
   display: inline-flex;
   align-items: center;
   gap: 12px;
@@ -262,13 +262,10 @@ main .default-content-wrapper p:has(> a[href*="pdf"]:only-child) a {
   letter-spacing: normal;
 }
 
-main .default-content-wrapper p:has(> a[href*="pdf"]:only-child) a::before {
-  content: '';
-  display: inline-block;
+main .default-content-wrapper p:has(> a[href$=".pdf"]:only-child) a .icon {
   width: 24px;
   height: 24px;
   flex-shrink: 0;
-  background: url('/icons/download.svg') no-repeat center / contain;
 }
 
 /* sections */
