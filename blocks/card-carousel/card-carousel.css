@@ -101,9 +101,8 @@ main > .section.card-carousel-container > .card-carousel-wrapper {
   background-image: url('/icons/arrow-right-white.svg');
   background-repeat: no-repeat;
   background-position: center;
-  background-size: 16px 16px;
+  background-size: 20px 20px;
   flex-shrink: 0;
-  overflow: hidden;
 }
 
 .card-carousel .cards-card-body a:hover {
@@ -112,15 +111,25 @@ main > .section.card-carousel-container > .card-carousel-wrapper {
 }
 
 .card-carousel .cards-card-body a:hover::after {
-  background-color: var(--text-color);
-  animation: arrow-slide 0.4s ease;
+  animation: arrow-shift 0.4s ease;
 }
 
-@keyframes arrow-slide {
-  0% { background-position: center; }
-  40% { background-position: 200% center; opacity: 0; }
-  41% { background-position: -200% center; opacity: 0; }
-  100% { background-position: center; opacity: 1; }
+@keyframes arrow-shift {
+  0% {
+    background-position: center;
+  }
+
+  40% {
+    background-position: calc(100% + 20px) center;
+  }
+
+  41% {
+    background-position: calc(0% - 20px) center;
+  }
+
+  100% {
+    background-position: center;
+  }
 }
 
 /* Navigation arrows */
