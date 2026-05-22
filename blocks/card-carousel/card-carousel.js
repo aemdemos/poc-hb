@@ -169,4 +169,61 @@ export default function decorate(block) {
   startAutoplay();
   block.addEventListener('mouseenter', stopAutoplay);
   block.addEventListener('mouseleave', startAutoplay);
+
+  // Drag/swipe support
+  let dragStartX = 0;
+  let dragCurrentX = 0;
+  let isDragging = false;
+  let dragOffset = 0;
+
+  function getBaseOffset() {
+    const slideStep = getSlideStep();
+    const slideWidth = allSlides[0].getBoundingClientRect().width;
+    const containerWidth = container.getBoundingClientRect().width;
+    const marginL = parseFloat(window.getComputedStyle(allSlides[0]).marginLeft) || 0;
+    return (containerWidth / 2) - (slideWidth / 2) - (trackIndex * slideStep) - marginL;
+  }
+
+  function onDragStart(e) {
+    if (isTransitioning) return;
+    isDragging = true;
+    dragStartX = e.type.includes('touch') ? e.touches[0].clientX : e.clientX;
+    dragOffset = getBaseOffset();
+    track.style.transition = 'none';
+    stopAutoplay();
+  }
+
+  function onDragMove(e) {
+    if (!isDragging) return;
+    e.preventDefault();
+    dragCurrentX = e.type.includes('touch') ? e.touches[0].clientX : e.clientX;
+    const diff = dragCurrentX - dragStartX;
+    track.style.transform = `translateX(${dragOffset + diff}px)`;
+  }
+
+  function onDragEnd() {
+    if (!isDragging) return;
+    isDragging = false;
+    const diff = dragCurrentX - dragStartX;
+    const threshold = getSlideStep() * 0.2;
+    if (diff < -threshold) {
+      goNext();
+    } else if (diff > threshold) {
+      goPrev();
+    } else {
+      setTrackPosition(true);
+    }
+    startAutoplay();
+  }
+
+  container.addEventListener('mousedown', onDragStart);
+  container.addEventListener('mousemove', onDragMove);
+  container.addEventListener('mouseup', onDragEnd);
+  container.addEventListener('mouseleave', () => { if (isDragging) onDragEnd(); });
+  container.addEventListener('touchstart', onDragStart, { passive: true });
+  container.addEventListener('touchmove', onDragMove, { passive: false });
+  container.addEventListener('touchend', onDragEnd);
+  container.style.cursor = 'grab';
+  container.addEventListener('mousedown', () => { container.style.cursor = 'grabbing'; });
+  container.addEventListener('mouseup', () => { container.style.cursor = 'grab'; });
 }

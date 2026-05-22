@@ -60,6 +60,9 @@ main > .section.card-carousel-container > .card-carousel-wrapper {
   width: 100%;
   aspect-ratio: var(--card-carousel-image-aspect-ratio);
   object-fit: cover;
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-drag: none;
 }
 
 .card-carousel .cards-card-body {
