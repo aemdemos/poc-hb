@@ -104,14 +104,13 @@ main > .section.carousel-container > .carousel-wrapper {
 .carousel .carousel-slide-indicators {
   display: flex;
   justify-content: center;
-  gap: 15px;
   padding: 20px 0;
   background-color: transparent;
   line-height: 1;
 }
 
 .carousel .carousel-slide-indicator button {
-  width: auto;
+  width: 24px;
   height: auto;
   margin: 0;
   padding: 4px 0;

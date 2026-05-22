@@ -186,14 +186,13 @@ main > .section.card-carousel-container > .card-carousel-wrapper {
 .card-carousel .card-carousel-indicators {
   display: flex;
   justify-content: center;
-  gap: 15px;
   padding: 20px 0;
   list-style: none;
   margin: 0;
 }
 
 .card-carousel .card-carousel-indicators button {
-  width: auto;
+  width: 24px;
   height: auto;
   margin: 0;
   padding: 4px 0;
