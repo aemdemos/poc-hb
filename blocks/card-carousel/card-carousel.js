@@ -15,7 +15,7 @@ export default function decorate(block) {
   const container = document.createElement('div');
   container.classList.add('card-carousel-slides-container');
 
-  const track = document.createElement('div');
+  const track = document.createElement('ul');
   track.classList.add('card-carousel-track');
 
   const cards = rows.map((row) => {
