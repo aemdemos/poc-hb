@@ -52,11 +52,10 @@ footer .footer ul {
   list-style: none;
   padding: 0;
   margin: 0;
-}
 
-footer .footer ul li {
-  padding: 0;
-  line-height: 22.4px;
+  li:has(a) {
+    min-height: 24px;
+  }
 }
 
 /* Contact column spacing: match reference double-br gaps */
