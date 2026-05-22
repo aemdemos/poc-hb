@@ -137,7 +137,7 @@ export default async function decorate(block) {
   hamburger.innerHTML = `<button type="button" aria-controls="nav" aria-label="Open navigation">
       <span class="nav-hamburger-icon"></span>
     </button>`;
-  hamburger.addEventListener('click', () => toggleMegaMenu(nav));
+  hamburger.querySelector('button').addEventListener('click', () => toggleMegaMenu(nav));
   nav.prepend(hamburger);
   nav.setAttribute('aria-expanded', 'false');
 
