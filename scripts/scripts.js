@@ -543,10 +543,10 @@ async function loadLazy(doc) {
     }, { once: true });
   }
 
-(() => {
-  const hasQE = new URL(window.location.href).searchParams.has('quick-edit');
-  if (hasQE) import('../tools/quick-edit/quick-edit.js').then((mod) => mod.default());
-})();
+  (() => {
+    const hasQE = new URL(window.location.href).searchParams.has('quick-edit');
+    if (hasQE) import('../tools/quick-edit/quick-edit.js').then((mod) => mod.default());
+  })();
 }
 
 /**
@@ -581,7 +581,7 @@ export async function loadPage() {
   await loadEager(document);
   await loadLazy(document);
   loadDelayed();
-  /* loadSidekick(); DA specific */
+  loadSidekick(); // DA specific
 }
 
 // DA UE Editor support before page load
