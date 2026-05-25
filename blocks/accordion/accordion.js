@@ -1,5 +1,17 @@
 import { moveInstrumentation } from '../../scripts/scripts.js';
 
+function collapseItem(item) {
+  item.classList.remove('active');
+  const body = item.querySelector('.accordion-item-body');
+  if (body) body.style.maxHeight = '0';
+}
+
+function expandItem(item) {
+  item.classList.add('active');
+  const body = item.querySelector('.accordion-item-body');
+  if (body) body.style.maxHeight = `${body.scrollHeight}px`;
+}
+
 export default function decorate(block) {
   const ul = document.createElement('ul');
   [...block.children].forEach((row) => {
@@ -13,8 +25,8 @@ export default function decorate(block) {
       label.className = 'accordion-item-label';
       label.addEventListener('click', () => {
         const isActive = li.classList.contains('active');
-        ul.querySelectorAll('.accordion-item.active').forEach((item) => item.classList.remove('active'));
-        if (!isActive) li.classList.add('active');
+        ul.querySelectorAll('.accordion-item.active').forEach((item) => collapseItem(item));
+        if (!isActive) expandItem(li);
       });
     }
     if (body !== null && body !== undefined) body.className = 'accordion-item-body';
