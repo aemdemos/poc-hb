@@ -3,6 +3,6 @@
   --hero-padding: 40px 24px;
   --hero-padding-desktop: 0 32px;
   --hero-min-height: 300px;
-  --hero-min-height-desktop: calc(100vh - (var(--header-height) + 124px));
+  --hero-min-height-desktop: 80vh;
   --hero-heading-max-width: 960px;
 }
