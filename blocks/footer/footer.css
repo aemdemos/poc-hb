@@ -133,7 +133,7 @@ footer .footer > div > div:last-child {
   footer .footer > div {
     padding: var(--footer-padding-desktop);
     display: grid;
-    grid-template-columns: repeat(3, 400px);
+    grid-template-columns: repeat(3, 1fr);
     gap: 0;
   }
 
@@ -151,7 +151,7 @@ footer .footer > div > div:last-child {
 
   footer .footer > div > div:last-child .default-content-wrapper {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: auto 1fr auto;
     align-items: center;
   }
 
@@ -159,7 +159,7 @@ footer .footer > div > div:last-child {
     display: flex;
     align-items: center;
     gap: 12px;
-    white-space: nowrap;
+    flex-wrap: wrap;
     margin: 0;
     padding: 0 21px;
   }
