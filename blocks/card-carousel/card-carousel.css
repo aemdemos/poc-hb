@@ -2,6 +2,7 @@
 
 .card-carousel-container {
   padding: 0;
+  overflow-x: clip;
 }
 
 main > .section.card-carousel-container > .card-carousel-wrapper {
