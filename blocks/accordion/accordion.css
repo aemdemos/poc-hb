@@ -74,9 +74,10 @@
 }
 
 .accordion .accordion-item-body {
-  display: none;
-  padding: 16px 80px 0 100px;
+  max-height: 0;
+  padding: 0 80px 0 100px;
   overflow: hidden;
+  transition: max-height 0.4s ease, padding 0.4s ease;
 }
 
 .accordion .accordion-item-body ul {
@@ -85,16 +86,17 @@
   margin: 0 0 30px 28px;
 }
 
-.accordion .accordion-item-body ul li {
+.accordion .accordion-item-body > ul > li {
   border: none;
   margin-bottom: 8px;
   padding-left: 24px;
-  text-indent: -24px;
+  position: relative;
 }
 
-.accordion .accordion-item-body ul li::before {
+.accordion .accordion-item-body > ul > li::before {
   content: '—';
-  margin-right: 8px;
+  position: absolute;
+  left: 0;
 }
 
 .accordion .accordion-item-body ol {
@@ -118,5 +120,5 @@
 }
 
 .accordion li.active .accordion-item-body {
-  display: block;
+  padding-top: 16px;
 }
