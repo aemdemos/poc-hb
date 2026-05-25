@@ -58,7 +58,7 @@ main > .section.carousel-container > .carousel-wrapper {
   left: 0;
   right: 0;
   z-index: 1;
-  padding: 0 calc((100vw - var(--max-width-site)) / 2) 40px;
+  padding: 0 max(24px, calc((100vw - var(--max-width-site)) / 2)) 40px;
   color: white;
   background-color: transparent;
 }
@@ -144,6 +144,6 @@ main > .section.carousel-container > .carousel-wrapper {
 
 @media (width >= 900px) {
   .carousel .carousel-slide .carousel-slide-content {
-    padding-left: calc((100vw - var(--max-width-site)) / 2);
+    padding-left: max(24px, calc((100vw - var(--max-width-site)) / 2));
   }
 }
